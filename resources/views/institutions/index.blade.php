@@ -1,6 +1,8 @@
 @extends ('layouts.base')
 
-@section ('title', 'Учебные заведения')
+@section ('title')
+    {{ translate($institutionType, 'i', 'p', true) }}
+@endsection
 
 @section ('styles')
   <link rel="stylesheet" href="/css/blueberry.css">

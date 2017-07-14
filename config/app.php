@@ -179,6 +179,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Custom Providers
+         */
+        App\Providers\ComposerServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +233,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /**
+         * Custom aliases
+         */
+        'Translator' => App\Support\Lang\Translator::class;
     ],
 
 ];
