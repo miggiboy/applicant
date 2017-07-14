@@ -43,7 +43,7 @@
             <i class="call icon" style="color: #565554;"></i> {{ $institution->call_center }}
         </p>
     @endif
-    @isset($institution->reception->email))
+    @isset($institution->reception->email)
         <p style="color:#565554;margin:0px;">
             <i class="at icon" style="color: #565554;"></i>{{ $institution->reception->email }}
         </p>

@@ -26,7 +26,7 @@
             <p>Основан в {{ $institution->foundation_year }} г.</p>
         @endif
     </div>
-    @isset($institution->has_dormitory))
+    @isset($institution->has_dormitory)
         <div id="vuz_info_2">
             @if ($institution->has_dormitory)
                 <i class="add circle icon" style="color: #ff831f;"  title="Есть общежитие"></i>
