@@ -38,12 +38,12 @@
                             Университеты
                         </div>
                     </a>
-                    <a href="{{ url('/college') }}">
+                    <a href="{{ route('institutions.index', 'colleges') }}">
                         <div class="menu_item">
                             Колледжи
                         </div>
                     </a>
-                    <a href="{{ url('/specialities') }}">
+                    <a href="{{ url('/specialties') }}">
                         <div class="menu_item">
                             Специальности
                         </div>

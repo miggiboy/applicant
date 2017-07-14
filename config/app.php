@@ -236,7 +236,7 @@ return [
         /**
          * Custom aliases
          */
-        'Translator' => App\Support\Lang\Translator::class;
+        'Translator' => App\Support\Lang\Translator::class,
     ],
 
 ];

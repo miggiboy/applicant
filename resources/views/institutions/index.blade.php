@@ -13,7 +13,7 @@
       .lol {
         margin: 0px 8px;
       }
-      .ui.selection.dropdown > .dropdown.icon {
+      .ui .selection .dropdown > .dropdown .icon {
         margin-top: -5px;
       }
       .ui.compact .selection .dropdown .lol {
@@ -28,11 +28,25 @@
 <div id="choose">
     <div class="korpus">
         @if (Request::path() == 'vuz'|| Request::path() == 'vuzy_search')
-        <input type="radio" name="odin" checked="checked" id="vkl1"/><label for="vkl1"><a href="{{ url('/vuz') }}" style="text-decoration:none;color: inherit;">Выбрать ВУЗ</a></label><input type="radio" name="odin"
-            id="vkl2"/><label for="vkl2"><a href="{{ url('/college') }}" style="text-decoration:none;color: inherit;">Выбрать колледж</a></label>
+            <input type="radio" name="odin" checked="checked" id="vkl1">
+            <label for="vkl1">
+                <a href="{{ url('/vuz') }}" style="text-decoration: none; color: inherit;">Выбрать ВУЗ</a>
+            </label>
+
+            <input type="radio" name="odin" id="vkl2">
+            <label for="vkl2">
+                <a href="{{ url('/college') }}" style="text-decoration: none; color: inherit;">Выбрать колледж</a>
+            </label>
+
         @elseif (Request::path() == 'college'|| Request::path() == 'colleges/search')
-        <input type="radio" name="odin"  id="vkl1"/><label for="vkl1"><a href="{{ url('/vuz') }}" style="text-decoration:none;color: inherit;">Выбрать ВУЗ</a></label><input type="radio" checked="checked" name="odin"
-            id="vkl2"/><label for="vkl2"><a href="{{ url('/college') }}" style="text-decoration:none;color: inherit;">Выбрать колледж</a></label>
+            <input type="radio" name="odin"  id="vkl1">
+            <label for="vkl1">
+                <a href="{{ url('/vuz') }}" style="text-decoration: none; color: inherit;">Выбрать ВУЗ</a>
+            </label>
+            <input type="radio" checked="checked" name="odin" id="vkl2">
+            <label for="vkl2">
+                <a href="{{ url('/college') }}" style="text-decoration: none; color: inherit;">Выбрать колледж</a>
+            </label>
         @endif
         <div>
             Высшее учебное заведение — учебное заведение, дающее высшее </br>профессиональное образование и осуществляющее научную деятельность.
@@ -57,7 +71,7 @@
 <div class="ui very padded teal segment custom" style="width: 721px;margin-top: 80px;">
     @if (Request::path() == 'vuz'|| Request::path() == 'vuzy_search')
     <form id="poi" class="ui small form" action="{{ route('vuzy_search') }}" method="GET">
-        @elseif (Request::path() == 'college'|| Request::path() == 'colleges/search')
+    @elseif (Request::path() == 'college'|| Request::path() == 'colleges/search')
     <form id="poi" class="ui small form" action="{{ route('colleges.search') }}" method="GET">
         @endif
         <div style="height: 61px;">
@@ -90,51 +104,53 @@
     @if (count($institutions))
     <div class="ui large celled very relaxed selection list" >
         @foreach ($institutions as $institution)
-        @if (Request::path() == 'vuz' || Request::path() == 'vuzy_search')
-        @if (!file_exists(public_path('/img/logo/u' . $institution->id . '.png')))
-        <div class="university item" style="cursor: default;">
-            <div class="content">
-                <a  href="{{ route('vuz_profile', $institution) }}">
-                <i class="teal university icon"></i>{{ $institution->title }}
-                </a><br><br>
-                Город: {{ $institution->city->title }}
-            </div>
-        </div>
-        @else
-        <div class="university item" style="cursor: default;">
-            <div class="content">
-                <img src="/img/logo/u{{$institution->id}}.png" style="width:50px;height:50px;float:left;position:relative;">
-                <div style="margin-top:9px; width:635px;"><a  href="{{ route('vuz_profile', $institution) }}">
-                    {{ $institution->title }}
-                    </a><br>
-                    Город: {{ $institution->city->title }}
-                </div>
-            </div>
-        </div>
-        @endif
-        @elseif (Request::path() == 'college' || Request::path() == 'colleges/search')
-        @if (!file_exists(public_path('/img/logo/c' . $institution->id . '.png')))
-        <div class="university item" style="cursor: default;">
-            <div class="content">
-                <a  href="{{ route('college_profile', $institution) }}">
-                <i class="teal university icon"></i>{{ $institution->title }}
-                </a><br><br>
-                Город: {{ $institution->city->title }}
-            </div>
-        </div>
-        @else
-        <div class="university item" style="cursor: default;">
-            <div class="content">
-                <img src="/img/logo/c{{$institution->id}}.png" style="width:50px;height:50px;float:left;position:relative;">
-                <div style="margin-top:9px; width:635px;"><a  href="{{ route('college_profile', $institution) }}">
-                    {{ $institution->title }}
-                    </a><br>
-                    Город: {{ $institution->city->title }}
-                </div>
-            </div>
-        </div>
-        @endif
-        @endif
+            @if (Request::path() == 'vuz' || Request::path() == 'vuzy_search')
+                @if (!file_exists(public_path('/img/logo/u' . $institution->id . '.png')))
+                    <div class="university item" style="cursor: default;">
+                        <div class="content">
+                            <a  href="{{ route('vuz_profile', $institution) }}">
+                                <i class="teal university icon"></i> {{ $institution->title }}
+                            </a>
+                            <br>
+                            <br>
+                            Город: {{ $institution->city->title }}
+                        </div>
+                    </div>
+                @else
+                    <div class="university item" style="cursor: default;">
+                        <div class="content">
+                            <img src="/img/logo/u{{$institution->id}}.png" style="width:50px;height:50px;float:left;position:relative;">
+                            <div style="margin-top:9px; width:635px;"><a  href="{{ route('vuz_profile', $institution) }}">
+                                {{ $institution->title }}
+                                </a><br>
+                                Город: {{ $institution->city->title }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                    @elseif (Request::path() == 'college' || Request::path() == 'colleges/search')
+                    @if (!file_exists(public_path('/img/logo/c' . $institution->id . '.png')))
+                    <div class="university item" style="cursor: default;">
+                        <div class="content">
+                            <a  href="{{ route('college_profile', $institution) }}">
+                            <i class="teal university icon"></i>{{ $institution->title }}
+                            </a><br><br>
+                            Город: {{ $institution->city->title }}
+                        </div>
+                    </div>
+                    @else
+                    <div class="university item" style="cursor: default;">
+                        <div class="content">
+                            <img src="/img/logo/c{{$institution->id}}.png" style="width:50px;height:50px;float:left;position:relative;">
+                            <div style="margin-top:9px; width:635px;"><a  href="{{ route('college_profile', $institution) }}">
+                                {{ $institution->title }}
+                                </a><br>
+                                Город: {{ $institution->city->title }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endif
         @endforeach
     </div>
     @endif
