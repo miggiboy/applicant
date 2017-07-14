@@ -69,13 +69,15 @@
                            name="query"
                            class="prompt"
                            placeholder="Название учебного заведения..."
-                           style="margin-bottom: 10px; width: 635px; height: 43px;">
+                           style="margin-bottom: 10px; width: 635px; height: 43px;"
+                           value="{{ request('query') }}"
+                           autofocus>
                 </div>
             </div>
             <select class="ui search dropdown lul" id="select" name="specialty"  style="width: 306px;">
                 <option value=" " selected="selected">Все специальности</option>
                 @foreach ($specialties as $specialty)
-                    <option value="{{ $specialty->id }}">
+                    <option value="{{ $specialty->id }}" {{ request('specialty') == $specialty->id ? 'selected' : '' }}>
                         {{ $specialty->title }}
                         <p style="color:#888;">({{ $specialty->code }})</p>
                     </option>
@@ -84,7 +86,7 @@
             <select class="ui search dropdown lol" id="select" name="city" style="width: 160px;">
                 <option value=" " selected="selected">Все города</option>
                 @foreach ($cities as $city)
-                    <option value="{{ $city->id }}">
+                    <option value="{{ $city->id }}" {{ request('city') == $city->id ? 'selected' : '' }}>
                         {{ $city->title }}
                     </option>
                 @endforeach

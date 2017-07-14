@@ -31,15 +31,11 @@ trait Searchable
         return $query->where('city_id', $city);
     }
 
-    /**
-     * Scope a query to only include paid institutions.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param  Boolean $isPaid
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeIsPaid($query, $isPaid = true)
+    public function scopeWithSpecialty($query, $specialtyID)
     {
-        return $query->where('is_paid', $isPaid);
+        return
+            $query->whereHas('specialties', function ($query) use ($specialtyID) {
+                $query->where('id', $specialtyID);
+            });
     }
 }

@@ -23,12 +23,8 @@ class InstitutionSearch
             $q->in($request->city);
         }
 
-        if ($request->has('has_specialties')) {
-            $q->has('specialties', (bool) $request->has_specialties);
-        }
-
-        if ($request->has('has_map')) {
-            $q->has('map', (bool) $request->has_map);
+        if ($request->has('specialty')) {
+            $q->withSpecialty($request->specialty);
         }
 
         return $q;
