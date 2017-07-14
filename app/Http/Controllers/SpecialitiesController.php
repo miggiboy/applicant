@@ -3,53 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreSpecialityRequest;
-use App\Http\Requests\UpdateSpecialityRequest;
 use App\Http\Controllers\Controller;
 
+use App\Models\Specialty\{
+    Specialty,
+    SpecialtyDirection
+};
 
-use App\{Direction, Subject, Speciality};
-
-class SpecialitiesController extends Controller
+class SpecialtiesController extends Controller
 {
-
-    public function index(Request $request)
+    public function index($institutionType)
     {
-        if (! $request->has('inst')) {
-            $directions     = Direction::all()->sortBy('title');
-            $specialities   = Speciality::orderBy('title')->with(['direction'])->paginate(15);
-        } else {
-            $directions = Direction::where('institution', (bool) $request->inst)
-                ->orderBy('title')
-                ->get();
-
-            $specialities = Speciality::ofInstitution($request->inst)->with(['direction'])
-                ->orderBy('title')
-                ->paginate(15);
-        }
-
-        return view('specialities.index', compact('specialities', 'directions'));
-    }
-    public function specialitieslist(Direction $direction, Request $request)
-    {
-        $specialities = Speciality::where('direction_id', $direction->id)
-            ->orderBy('title')
-            ->paginate(15);
-                     
-        return view('specialitieslist', compact('specialities', 'direction'));
-    }
-    public function show(Speciality $speciality)
-    {
-         $professions = $speciality->professions()
+        $directions = SpecialtyDirection::of($institutionType)
             ->orderBy('title')
             ->get();
-            
-        return view('specialities.show', compact('speciality', 'professions'));
+
+        $specialties = Specialty::of($institutionType)
+            ->orderBy('title')
+            ->with(['direction'])
+            ->paginate(15);
+
+        return view('specialties.index', compact('specialties', 'directions'));
     }
 
-    public function search(Request $request) 
+    public function specialtieslist(Direction $direction, Request $request)
     {
-        $q = Speciality::query();
+        $specialties = Specialty::where('direction_id', $direction->id)
+            ->orderBy('title')
+            ->paginate(15);
+
+        return view('specialtieslist', compact('specialties', 'direction'));
+    }
+    public function show(Specialty $specialty)
+    {
+         $professions = $specialty->professions()
+            ->orderBy('title')
+            ->get();
+
+        return view('specialties.show', compact('specialty', 'professions'));
+    }
+
+    public function search(Request $request)
+    {
+        $q = Specialty::query();
 
         if (request()->has('query')) {
             $q->like(request('query'));
@@ -67,24 +63,24 @@ class SpecialitiesController extends Controller
                 ->orderBy('title')
                 ->get();
 
-        $specialities = $q->orderBy('title')->with(['direction'])->paginate(15);
+        $specialties = $q->orderBy('title')->with(['direction'])->paginate(15);
 
         $request->flashOnly(['query', 'direction', 'inst']);
 
-        return view('specialities_search', compact('specialities', 'directions'));
+        return view('specialties_search', compact('specialties', 'directions'));
     }
 
     public function autocomplete(Request $request){
-        
-        $specialities = Speciality::select('id as url', 'title', 'code')
+
+        $specialties = Specialty::select('id as url', 'title', 'code')
             ->like($request->input('query'))
             ->orderBy('title')
             ->get();
 
-        $specialities = $specialities->each(function ($item, $key) {
-            $item->url = 'http://mustim09.beget.tech/specialities/' . $item->url;
+        $specialties = $specialties->each(function ($item, $key) {
+            $item->url = 'http://mustim09.beget.tech/specialties/' . $item->url;
         });
 
-        return response()->json(['specialities' => $specialities]);
+        return response()->json(['specialties' => $specialties]);
     }
 }

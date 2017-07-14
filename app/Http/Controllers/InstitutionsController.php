@@ -21,7 +21,7 @@ class InstitutionsController extends Controller
     {
         $institutions = Institution::ofType($institutionType)
             ->orderBy('title')
-            ->with(['city'])
+            ->with(['city', 'media'])
             ->paginate(15);
 
         $cities = City::all()->sortBy('title');
@@ -33,5 +33,17 @@ class InstitutionsController extends Controller
             ->get();
 
         return view('institutions.index', compact('institutions', 'cities', 'specialties'));
+    }
+
+    public function show($institutionType, Institution $institution)
+    {
+        $institution->load(['specialties' => function ($q) {
+            $q
+                ->getOnly('specialties')
+                ->orderBy('pivot_specialty_id')
+                ->with(['qualifications', 'direction']);
+        }]);
+
+        return view('institutions.show', compact('institution'));
     }
 }

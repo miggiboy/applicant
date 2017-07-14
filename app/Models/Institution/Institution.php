@@ -91,6 +91,11 @@ class Institution extends Model implements HasMediaConversions
         return $value ? $this->formatUrl($value) : null;
     }
 
+    public function addressQuery()
+    {
+        return 'Казахстан, ' . $this->city->title . ', ' . ($this->address ?: $this->title);
+    }
+
 
     /**
      * Checks if this institution has reception committee
@@ -121,19 +126,22 @@ class Institution extends Model implements HasMediaConversions
         return $url;
     }
 
+    public function logo()
+    {
+        return $this->getMedia('logo')->first();
+    }
+
+    public function hasLogo()
+    {
+        return $this->logo() !== null;
+    }
+
     public function registerMediaConversions()
     {
         $this->addMediaConversion('thumb')
               ->width(368)
               ->height(232)
               ->sharpen(10);
-    }
-
-    public function togglePaidStatus()
-    {
-        $this->is_paid = ! $this->is_paid;
-
-        return $this;
     }
 
     /**
@@ -152,6 +160,6 @@ class Institution extends Model implements HasMediaConversions
 
     public function map()
     {
-        return $this->hasOne(Map::class, 'mapable_id');
+        return $this->hasOne(Map::class, 'institution_id');
     }
 }
