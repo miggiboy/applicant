@@ -26,7 +26,7 @@ Route::get('/wellpaidkz', function () {
 /**
  * Subjects
  */
- 
+
 Route::get('/predmety/{subject}', 'SubjectsController@show')->name('subject.show');
 
 
@@ -81,7 +81,7 @@ Route::get('/specialitieslist/{direction}', 'SpecialitiesController@specialities
 	->name('specialitieslist');
 Route::get('/professionslist/{direction}', 'Professions\ProfessionsController@proflist')
 	->name('professionslist');
-	
+
  Route::group(['prefix' => 'specialties/search'], function () {
         Route::get('', 'SpecialitiesController@search')->name('specialties.search');
         Route::get('/autocomplete', 'SpecialtiesController@autocomplete')->name('specialties.autocomplete');
@@ -100,16 +100,16 @@ Route::get('/specialities/{specialty}/institutions', 'SpecialtyInstitutionsContr
 
 Route::get('/universities/autocomplete/search', 'UniversitiesController@autocomplete')
     ->name('universities.autocomplete');
-    
+
 Route::get('/colleges/autocomplete/search', 'UniversitiesController@autocompleteCollege')
     ->name('colleges.autocomplete');
 
 Route::get('/colleges/search', 'UniversitiesController@searchCollege')
     ->name('colleges.search');
-    
+
 Route::get('/colleges/{college}', 'UniversitiesController@showCollege')
     ->name('college_profile');
-    
+
 Route::get('/college', 'UniversitiesController@indexCollege')->name('colleges');
 
 Route::get('/professions/{profession}', 'Professions\ProfessionsController@show')->name('profession.show');
@@ -126,9 +126,6 @@ Route::get('/ent', function () {
 
 
 Auth::routes();
-
-
-Route::get('/home', 'HomeController@index');
 
 /**
  * Feedback

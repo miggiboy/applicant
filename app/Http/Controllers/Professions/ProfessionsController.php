@@ -31,20 +31,21 @@ class ProfessionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function show(Profession $profession)
     {
         return view('professions.show', compact('profession'));
     }
+
     public function proflist(ProfDirection $direction, Request $request)
     {
         $professions = Profession::where('prof_direction_id', $direction->id)
             ->orderBy('title')
             ->paginate(15);
-                     
+
         return view('professionslist', compact('professions', 'direction'));
     }
-    public function search(Request $request) 
+    public function search(Request $request)
     {
         $q = Profession::query();
 

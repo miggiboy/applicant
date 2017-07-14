@@ -13,15 +13,15 @@ class UniversitiesController extends Controller
 {
     public function index()
     {
-
         $specialties = Speciality::ofInstitution(1)->with(['direction'])
                 ->orderBy('title')
                 ->isSpecialty()
                 ->get();
+
         $cities = City::all()->sortBy('title');
 
         $institutions = University::orderBy('title')->with('city')->paginate(15);
-       
+
         return view('vuzy', compact('institutions', 'cities', 'specialties'));
     }
 
@@ -41,7 +41,7 @@ class UniversitiesController extends Controller
         $college->load(['specialities' => function ($q) {
             $q->orderBy('college_speciality.speciality_id');
         }]);
-        
+
         return view('colleges.show', compact('college'));
     }
 
@@ -60,7 +60,7 @@ class UniversitiesController extends Controller
                     $specialty = Speciality::find($s_id);
                         if($specialty->insitutionType() == 'universities'){
                       $specialty->load(['universities' => function ($query) {
-                          
+
                         if (request()->has('city')) {
                         $query->where('city_id', request('city'));
                         }
@@ -84,9 +84,9 @@ class UniversitiesController extends Controller
            $cities = City::all()->sortBy('title');
             $qualifications="";
                     return view('linked_specialities', compact('specialty', 'institutions', 'cities','qualifications'));
-                
+
        }
-        
+
         $institutions = $q->orderBy('paid_rating', 'DESC')
             ->orderBy('title')
             ->with(['city'])
@@ -98,7 +98,7 @@ class UniversitiesController extends Controller
         $cities = City::all()->sortBy('title');
         return view('vuzy', compact('institutions', 'cities', 'specialties'));
     }
-    
+
       public function searchCollege()
     {
         $q = College::query();
@@ -107,7 +107,7 @@ class UniversitiesController extends Controller
                     $specialty = Speciality::find($s_id);
                         if($specialty->insitutionType() == 'universities'){
                       $specialty->load(['universities' => function ($query) {
-                          
+
                         if (request()->has('city')) {
                         $query->where('city_id', request('city'));
                         }
@@ -136,8 +136,8 @@ class UniversitiesController extends Controller
                             ->get();
                     }
                     return view('linked_specialities', compact('specialty', 'institutions', 'cities','qualifications'));
-                
-            
+
+
         }
          if (request()->has('query')) {
             $q->like(request('query'));
@@ -145,20 +145,20 @@ class UniversitiesController extends Controller
         if (request()->has('city')) {
             $q->inCity(request('city'));
         }
-          
-        
+
+
         $institutions = $q->orderBy('paid_rating', 'DESC')
             ->orderBy('title')
             ->with(['city'])
             ->paginate(15);
-            
-          
-       
+
+
+
         $specialties = Speciality::ofInstitution(0)->with(['direction'])
                 ->orderBy('title')
                 ->get();
-            
-                
+
+
         $cities = City::all()->sortBy('title');
         return view('vuzy', compact('institutions', 'cities', 'specialties'));
     }
@@ -168,9 +168,9 @@ class UniversitiesController extends Controller
         // dd($university->with('specialities'));
         return view('vuz_profile', compact('university'));
     }
-    
+
     public function autocomplete(Request $request){
-        
+
         $universities = University::select('slug as url', "title as name", 'acronym')
             ->like($request->input('query'))
             ->orderBy('title')
@@ -183,9 +183,9 @@ class UniversitiesController extends Controller
 
         return response()->json(['universities' => $universities]);
     }
-    
+
     public function autocompleteCollege(Request $request){
-        
+
         $colleges = College::select('slug as url', "title as name", 'acronym')
             ->like($request->input('query'))
             ->orderBy('title')
