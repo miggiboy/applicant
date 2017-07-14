@@ -8,6 +8,10 @@ use App\Models\City\City;
 use App\Models\Institution\Institution;
 use App\Models\Specialty\Specialty;
 
+use App\Modules\Search\{
+    InstitutionSearch
+};
+
 class InstitutionsController extends Controller
 {
     public function __construct()
@@ -19,7 +23,7 @@ class InstitutionsController extends Controller
 
     public function index(Request $request, $institutionType)
     {
-        $institutions = Institution::ofType($institutionType)
+        $institutions = InstitutionSearch::applyFilters($request)
             ->orderBy('title')
             ->with(['city', 'media'])
             ->paginate(15);
@@ -45,5 +49,28 @@ class InstitutionsController extends Controller
         }]);
 
         return view('institutions.show', compact('institution'));
+    }
+
+    public function rtSearch(Request $request, $institutionType)
+    {
+        $institutions = Institution::select(
+                'slug as url', "title", 'abbreviation as description', 'city_id', 'type'
+            )
+            ->ofType($institutionType)
+            ->like($request->input('query'))
+            ->orderBy('title')
+            ->get();
+
+        $institutions = $institutions->each(function ($item, $key) {
+            $item->url = config('app.url')
+                . '/institutions/'
+                . str_plural($item->type)
+                . '/'
+                . $item->url;
+
+            $item->description = ($item->description . ' ' ?: '') . City::find($item->city_id)->title; // smth wrong here!
+        });
+
+        return response()->json(['results' => $institutions], 200);
     }
 }

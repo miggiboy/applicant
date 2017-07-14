@@ -63,7 +63,7 @@
 <div class="ui very padded teal segment custom" style="width: 721px;margin-top: 80px;">
     <form id="poi" class="ui small form" action="{{ route('institutions.index', $institutionType) }}" method="get">
         <div style="height: 61px;">
-            <div class="ui search {{ Request::path() }}">
+            <div class="ui search">
                 <div class="ui input">
                     <input type="text"
                            name="query"
@@ -182,33 +182,14 @@
 <script src="/js/app.js"></script>
 
 <script>
-    $('.ui.search.vuz').search({
+    $('.ui .search').search({
         apiSettings: {
-            url: "//vipusknik.kz/universities/autocomplete/search?query={query}"
-        },
+            url: '{{ Config::get('app.url') }}/institutions/{{ $institutionType }}/search?query={query}'
+       },
        fields: {
-            results     : 'universities',
-            title       : 'name',
-            description : 'acronym',
-            url         : 'url'
-        },
-        error : {
-          noResults   : 'Поиск не дал результатов',
-          serverError : 'Произошла ошибка при поиске...',
-        },
-        minCharacters : 2
-    });
-
-</script>
-<script>
-    $('.ui.search.college').search({
-        apiSettings: {
-            url: "//vipusknik.kz/colleges/autocomplete/search?query={query}"
-        },
-       fields: {
-            results     : 'colleges',
-            title       : 'name',
-            description : 'acronym',
+            results     : 'results',
+            title       : 'title',
+            description : 'description',
             url         : 'url'
         },
         error : {
