@@ -7,19 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Specialty\Specialty;
 
-use App\Traits\Marker\Markable;
-
 class Profession extends Model
 {
     /**
      * Laravel traits
      */
     use SoftDeletes;
-
-    /**
-     * Custom traits
-     */
-    use Markable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -61,24 +54,6 @@ class Profession extends Model
     public function scopeInCategory($query, $category)
     {
         return $query->where('category_id', $category);
-    }
-
-    /**
-     * Redirects to primary app (vipusknik.kz)
-     */
-
-    public function urlAtPrimaryApp()
-    {
-        return config('primary_app.urls.' . 'professions') . $this->slug;
-    }
-
-    /**
-     * Google search
-     */
-
-    public function googleSearchUrl()
-    {
-        return config('google.search.url') . 'Профессия ' . trim($this->title);
     }
 
     public function category()

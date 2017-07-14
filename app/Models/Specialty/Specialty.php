@@ -15,7 +15,6 @@ use App\Models\Profession\Profession;
 
 use \App\Models\Subject\Subject;
 
-
 class Specialty extends Model
 {
     /**
