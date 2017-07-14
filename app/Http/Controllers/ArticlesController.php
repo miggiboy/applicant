@@ -1,15 +1,21 @@
 <?php
 namespace App\Http\Controllers;
-use App\Article;
-use App\Category;
+
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
+
+use App\Models\{
+    Article,
+    Category
+};
+
 class ArticlesController extends Controller
 {
+    // TODO: update
     public function index()
     {
-        $articles = Article::orderBy('created_at')->paginate(3);
+        $articles = Article::latest()
+            ->take(3)
+            ->get();
 
         return view('welcome', compact('articles'));
     }

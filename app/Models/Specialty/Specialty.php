@@ -6,7 +6,6 @@ use App\Models\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Traits\Marker\Markable;
 use App\Traits\Specialty\Searchable;
 use App\Traits\Specialty\{
     RelatesToInstitution
@@ -28,7 +27,6 @@ class Specialty extends Model
      * Custom traits
      */
     use Searchable;
-    use Markable;
     use RelatesToInstitution;
 
     /**

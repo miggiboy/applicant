@@ -6,8 +6,6 @@ use App\Models\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Traits\Marker\Markable;
-
 use App\Traits\Institution\{
     HasSpecialties,
     Searchable
@@ -38,7 +36,6 @@ class Institution extends Model implements HasMediaConversions
     /**
      * Custom traits
      */
-    use Markable;
     use Searchable;
     use HasSpecialties;
 
@@ -103,24 +100,6 @@ class Institution extends Model implements HasMediaConversions
     public function hasReception()
     {
         return (bool) $this->reception()->count();
-    }
-
-    /**
-     * Google search
-     */
-
-    public function googleSearchUrl()
-    {
-        return config('google.search.url') . trim($this->title) . ', ' . trim($this->city->title);
-    }
-
-    /**
-     * Redirects to primary app (vipusknik.kz)
-     */
-
-    public function urlAtPrimaryApp()
-    {
-        return config('primary_app.urls.' . 'institution') . $this->slug;
     }
 
     public static function hasType($type)

@@ -3,7 +3,6 @@
 namespace App\Models\Article;
 
 use App\Models\Model;
-use App\Traits\Marker\Markable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
@@ -12,12 +11,6 @@ class Article extends Model
      * Laravel traits
      */
     use SoftDeletes;
-
-    /**
-     * Custom traits
-     */
-    use Markable;
-
 
     /**
      * The attributes that should be mutated to dates.
@@ -52,15 +45,6 @@ class Article extends Model
             $query->whereHas('categories', function ($query) use ($category) {
                 $query->where('id', $category);
             });
-    }
-
-    /**
-     * Redirects to primary app (vipusknik.kz)
-     */
-
-    public function urlAtPrimaryApp()
-    {
-        return config('primary_app.urls.' . 'articles') . $this->slug;
     }
 
     /**
