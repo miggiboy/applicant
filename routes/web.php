@@ -29,9 +29,17 @@ Route::group(['prefix' => '/{institutionType}-specialties'], function () {
 });
 
 
+/**
+ * UNT
+ */
 
+Route::get('/ent', 'UNTController@index')->name('ent');
 
+/**
+ * Subjects
+ */
 
+Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.show');
 
 
 
@@ -42,13 +50,6 @@ Route::get('/wellpaidworld', function () {
 Route::get('/wellpaidkz', function () {
     return view('wellpaidkz');
 });
-
-/**
- * Subjects
- */
-
-Route::get('/predmety/{subject}', 'SubjectsController@show')->name('subject.show');
-
 
 
 Route::get('/mostwantedworld', function () {
@@ -110,27 +111,7 @@ Route::get('/specialities/{speciality}', 'SpecialitiesController@show')->name('s
 Route::get('/specialities_search', 'SpecialitiesController@search')
     ->name('specialities_search');
 
-// Route::get('/vuzy', 'UniversitiesController@index')->name('universitiess');
-
-// Route::get('/vuz', 'UniversitiesController@index')->name('universities');
-// Route::get('/universities/{university}', 'UniversitiesController@show')
-//     ->name('vuz_profile');
-
 Route::get('/specialities/{specialty}/institutions', 'SpecialtyInstitutionsController@index')->name('linked_specialities');
-
-// Route::get('/universities/autocomplete/search', 'UniversitiesController@autocomplete')
-//     ->name('universities.autocomplete');
-
-// Route::get('/colleges/autocomplete/search', 'UniversitiesController@autocompleteCollege')
-//     ->name('colleges.autocomplete');
-
-// Route::get('/colleges/search', 'UniversitiesController@searchCollege')
-//     ->name('colleges.search');
-
-// Route::get('/colleges/{college}', 'UniversitiesController@showCollege')
-//     ->name('college_profile');
-
-// Route::get('/college', 'UniversitiesController@indexCollege')->name('colleges');
 
 Route::get('/professions/{profession}', 'Professions\ProfessionsController@show')->name('profession.show');
 
@@ -138,12 +119,6 @@ Route::get('/specialities', function () {
     return view('specialities');
 });
 Route::get('articles/{article}', 'ArticlesController@show')->name('article');
-// Route::get('/vuzy_search', 'UniversitiesController@search')
-//     ->name('vuzy_search');
-Route::get('/ent', function () {
-    return view('ent');
-});
-
 
 Auth::routes();
 

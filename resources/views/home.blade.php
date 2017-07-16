@@ -11,12 +11,12 @@
 @section ('content')
 <div id="vyberi_v">
     <!--<img src="girl.jpg" alt="Выбрать ВУЗ">-->
-    <a href="/vuz" style="text-decoration:none;">
+    <a href="{{ route('institutions.index', 'universities') }}" style="text-decoration:none;">
         <div class="button" style="width: 171px;left:272px;">
             <p>Выбрать ВУЗ</p>
         </div>
     </a>
-    <a href="/college   ">
+    <a href="{{ route('institutions.index', 'colleges') }}">
         <div class="button" style="width: 171px;left:272px;">
             <p>Выбрать колледж</p>
         </div>
