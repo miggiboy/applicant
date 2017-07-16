@@ -37,7 +37,8 @@ class FeedbackReceived extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.feedback-received')
+        return $this
+            ->markdown('emails.feedback-received')
             ->subject(str_limit($this->feedbackBody, 50));
     }
 }

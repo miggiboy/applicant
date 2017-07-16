@@ -30,27 +30,4 @@ trait Searchable
             ->where('title', 'like', "%{$input}%")
             ->orWhere('code', 'like', "%{$input}%");
     }
-
-    /**
-     * Includes specialties which (don't) have description
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    public function scopeHasDescription($query, $has = true)
-    {
-        return $query->where('description', ((bool) $has ? '!=' : '='), null);
-    }
-
-    /**
-     * Includes specialties which have no direction
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    public function scopeHasDirection($query, $has = true)
-    {
-        return $query
-            ->whereHas('direction', function($q) use ($has) {
-                $q->where('title', ((bool) $has ? '!=' : '='), 'Без направления');
-            });
-    }
 }
