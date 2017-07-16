@@ -23,35 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::bind('college', function ($value) {
-            return \App\Models\College\College::where('id', $value)
-                ->orWhere('slug', $value)
-                ->first();
-        });
-        
-        Route::bind('university', function ($value) {
-            return \App\Models\University\University::where('id', $value)
-                ->orWhere('slug', $value)
-                ->first();
-        });
-        
-        Route::bind('speciality', function ($value) {
-            return \App\Speciality::where('id', $value)
-                ->orWhere('slug', $value)
-                ->first();
-        });
-        
-        Route::bind('profession', function ($value) {
-            return \App\Profession::where('id', $value)
-                ->orWhere('slug', $value)
-                ->first();
-        });
-        
-        Route::bind('article', function ($value) {
-            return \App\Article::where('id', $value)
-                ->orWhere('slug', $value)
-                ->first();
-        });
+        //
 
         parent::boot();
     }

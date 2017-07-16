@@ -44,6 +44,11 @@ Route::get('/ent', 'UNTController@index')->name('ent');
 
 Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.show');
 
+/**
+ * Articles
+ */
+
+Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 
 
@@ -135,7 +140,6 @@ Route::get('/professions/{profession}', 'Professions\ProfessionsController@show'
 Route::get('/specialities', function () {
     return view('specialities');
 });
-Route::get('articles/{article}', 'ArticlesController@show')->name('article');
 
 Auth::routes();
 

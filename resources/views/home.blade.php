@@ -34,7 +34,7 @@
     </div>
 </div>
 <div id="Micons">
-    <a href="{{ url('/vuz') }}">
+    <a href="{{ route('institutions.index', 'universities') }}">
         <div class="Micon_block">
             <div class="Micon">
                 <div class="Micon_img">
@@ -278,7 +278,7 @@
         @foreach ($articles as $article)
         <div class="university item" style="cursor: default;">
             <div class="content">
-                <a class="header" href="{{route('article', $article)}}">
+                <a class="header" href="{{route('articles.show', $article)}}">
                 {{ $article->title }}
                 </a><br>
                 {{ $article->short_description }}

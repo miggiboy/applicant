@@ -1,7 +1,7 @@
 @extends ('layouts.base')
 
 @section ('title')
-{{ $subject->title }}
+  {{ $subject->title }}
 @endsection
 
 @section ('styles')
