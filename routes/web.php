@@ -100,30 +100,8 @@ Route::get('/professions/search', 'Professions\ProfessionsController@search')
 Route::get('/professions', function () {
     return view('professions');
 });
-// Route::get('/art', 'SpecialitiesController@art')->name('specialities');
-
-// Route::get('/techniq', 'SpecialitiesController@techniq')->name('specialities');
-
-Route::get('/specialitieslist/{direction}', 'SpecialitiesController@specialitieslist')
-	->name('specialitieslist');
-Route::get('/professionslist/{direction}', 'Professions\ProfessionsController@proflist')
-	->name('professionslist');
-
- Route::group(['prefix' => 'specialties/search'], function () {
-        Route::get('', 'SpecialitiesController@search')->name('specialties.search');
-        Route::get('/autocomplete', 'SpecialtiesController@autocomplete')->name('specialties.autocomplete');
-    });
-Route::get('/specialities/{speciality}', 'SpecialitiesController@show')->name('specialities.show');
-Route::get('/specialities_search', 'SpecialitiesController@search')
-    ->name('specialities_search');
-
-Route::get('/specialities/{specialty}/institutions', 'SpecialtyInstitutionsController@index')->name('linked_specialities');
 
 Route::get('/professions/{profession}', 'Professions\ProfessionsController@show')->name('profession.show');
-
-Route::get('/specialities', function () {
-    return view('specialities');
-});
 
 Auth::routes();
 
