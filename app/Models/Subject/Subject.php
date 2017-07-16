@@ -51,6 +51,13 @@ class Subject extends Model implements HasMedia
         return $subject->specialties();
     }
 
+    public function hasFilesIn(FileCategory $category)
+    {
+        return (bool) $this
+            ->getMedia($category->title)
+            ->count();
+    }
+
     /**
      * Relations
      */

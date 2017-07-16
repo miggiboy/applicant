@@ -12,7 +12,7 @@ return [
      * The maximum file size of an item in bytes. Adding a file
      * that is larger will result in an exception.
      */
-    'max_file_size' => 1024 * 1024 * 10,
+    'max_file_size' => 1024 * 1024 * 999,
 
     /*
      * This queue will be used to generate derived images.
@@ -23,7 +23,7 @@ return [
     /*
      * The class name of the media model to be used.
      */
-    'media_model' => Spatie\MediaLibrary\Media::class,
+    'media_model' => App\Models\Media\Media::class,
 
     /*
      * The engine that will perform the image conversions.

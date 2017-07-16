@@ -11,6 +11,9 @@ Route::get('/', 'HomeController@index')->name('home');
  */
 Route::group(['prefix' => '/institutions/{institutionType}'], function() {
 
+    /**
+     * Real-time dropdown search
+     */
     Route::get('/search', 'InstitutionsController@rtSearch');
 
     Route::get('', 'InstitutionsController@index')->name('institutions.index');
@@ -40,6 +43,20 @@ Route::get('/ent', 'UNTController@index')->name('ent');
  */
 
 Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.show');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
