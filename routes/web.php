@@ -41,6 +41,8 @@ Route::get('/specialty-directions/{group}', 'SpecialtyDirectionsController@show'
 
 Route::get('/ent', 'UNTController@index')->name('ent');
 
+Route::get('/testent', 'UNTController@testent')->name('testent');
+
 /**
  * Subjects
  */
@@ -61,46 +63,8 @@ Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show
 Route::get('/professions/{profession}', 'ProfessionsController@show')->name('professions.show');
 
 
-
-
-
-
-
-
-
-
-
-Route::get('/wellpaidworld', function () {
-    return view('wellpaidworld');
-});
-
-Route::get('/wellpaidkz', function () {
-    return view('wellpaidkz');
-});
-
-
-Route::get('/mostwantedworld', function () {
-    return view('mostwantedworld');
-});
-Route::get('/mostwantedkz', function () {
-    return view('mostwantedkz');
-});
-
-Route::get('/testent', function () {
-    return view('testent');
-});
-
-
-Route::get('/grant', function () {
-    return view('grant');
-});
-
-Auth::routes();
-
 /**
  * Feedback
  */
 
 Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
-
-

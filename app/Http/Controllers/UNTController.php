@@ -14,4 +14,9 @@ class UNTController extends Controller
 
         return view('UNT.index', compact('subjects'));
     }
+
+    public function testent()
+    {
+        return view('UNT.testent');
+    }
 }

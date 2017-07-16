@@ -84,52 +84,52 @@
         <hr size="1" color="#ff5500">
         <hr size="1" color="#ffb47a">
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 2) }}">
+            <a href="{{ route('specialties.index', 'obrazovanie') }}">
                 <p style="margin:0px;"><i class="student icon" style="color: #565554;"></i>Педагогические</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 12) }}">
+            <a href="{{ route('specialties.index', 'meditsina') }}">
                 <p style="margin:0px;"><i class="first aid icon" style="color: #565554;"></i>Медицинские</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 8) }}">
+            <a href="{{ route('specialties.index', 'tekhnicheskie-nauki-i-tekhnologii') }}">
                 <p style="margin:0px;"><i class="settings icon" style="color: #565554;"></i>Технические</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 4) }}">
+            <a href="{{ route('specialties.index', 'pravo') }}">
                 <p style="margin:0px;"><i class="legal icon" style="color: #565554;"></i>Юридические</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 5) }}">
+            <a href="{{ route('specialties.index', 'iskusstvo') }}">
                 <p style="margin:0px;"><i class="paint brush icon" style="color: #565554;"></i>Творческие</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 6) }}">
+            <a href="{{ route('specialties.index', 'sotsialnye-nauki-ekonomika-i-biznes') }}">
                 <p style="margin:0px;"><i class="world icon" style="color: #565554;"></i>Естественные</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 3) }}">
+            <a href="{{ route('specialties.index', 'gumanitarnye-nauki') }}">
                 <p style="margin:0px;"><i class="book icon" style="color: #565554;"></i>Гуманитарные</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 11) }}">
+            <a href="{{ route('specialties.index', 'voennoe-delo-i-bezopasnost') }}">
                 <p style="margin:0px;"><i class="military icon" style="color: #565554;"></i>Военные</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 9) }}">
+            <a href="{{ route('specialties.index', 'selskokhozyaystvennye-nauki') }}">
                 <p style="margin:0px;"><i class="tree icon" style="color: #565554;"></i>Аграрные</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialitieslist', 7) }}">
+            <a href="{{ route('specialties.index', 'estestvennye-nauki') }}">
                 <p style="margin:0px;"><i class="bar chart icon" style="color: #565554;"></i>Экономические</p>
             </a>
         </div>
