@@ -31,15 +31,6 @@ class SpecialtiesController extends Controller
         return view('specialties.show', compact('specialty'));
     }
 
-    public function specialtieslist(Direction $direction, Request $request)
-    {
-        $specialties = Specialty::where('direction_id', $direction->id)
-            ->orderBy('title')
-            ->paginate(15);
-
-        return view('specialtieslist', compact('specialties', 'direction'));
-    }
-
     public function search(Request $request)
     {
         $q = Specialty::query();
