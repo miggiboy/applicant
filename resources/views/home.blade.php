@@ -211,37 +211,37 @@
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 21) }}">
+            <a href="{{ route('subjects.show', 'mathematics') }}">
                 <p style="margin:0px;"><i class="superscript icon" style="color: #565554;"></i>Математика</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 19) }}">
+            <a href="{{ route('subjects.show', 'geography') }}">
                 <p style="margin:0px;"><i class="world icon" style="color: #565554;"></i>География</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 14) }}">
+            <a href="{{ route('subjects.show', 'world-history') }}">
                 <p style="margin:0px;"><i class="university icon" style="color: #565554;"></i>Всемирная История</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 18) }}">
+            <a href="{{ route('subjects.show', 'person-society-right') }}">
                 <p style="margin:0px;"><i class="law icon" style="color: #565554;"></i>Человек. Общество. Право</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 11) }}">
+            <a href="{{ route('subjects.show', 'chemistry') }}">
                 <p style="margin:0px;"><i class="lab icon" style="color: #565554;"></i>Химия</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 10) }}">
+            <a href="{{ route('subjects.show', 'biology') }}">
                 <p style="margin:0px;"><i class="leaf icon" style="color: #565554;"></i>Биология</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('subject.show', 22) }}">
+            <a href="{{ route('subjects.show', 'physics') }}">
                 <p style="margin:0px;"><i class="setting icon" style="color: #565554;"></i>Физика</p>
             </a>
         </div>
@@ -303,7 +303,17 @@
     document.querySelector('.popup').onclick = function(){
     swal({
     title: "Выберите обязательный предмет",
-    text: "<a href='/predmety/24'><img src='/subject/ist_kaz.png' style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'></a><a href='/predmety/28'><img src='/subject/matgram.png'  style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'></a><a href='/predmety/27'><img src='/subject/gramch.png'  style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'></a>",
+    text: `
+        <a href='/subjects/history'>
+            <img src='/img/subjects/history.png' style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'>
+        </a>
+        <a href='/subjects/mathematical-literacy'>
+            <img src='/img/subjects/mathematical-literacy.png'  style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'>
+        </a>
+        <a href='/subjects/grammar-reading'>
+            <img src='/img/subjects/grammar-reading.png'  style='margin: 0px 10px;' alt ='ЕНТ обязательные предметы'>
+        </a>
+    `,
     html: true,
     confirmButtonText: "Назад"
     });
@@ -311,7 +321,14 @@
     document.querySelector('.popup1').onclick = function(){
     swal({
     title: "Язык обучения и литература",
-    text: "</a><a href='/predmety/25'><img src='/subject/kazahyalit.png' alt ='ЕНТ язык обучения'  style='margin: 0px 10px;'></a><a href='/predmety/26'><img src='/subject/russkiylit.png'  style='margin: 0px 10px;' alt ='ЕНТ язык обучения'></a>",
+    text: `
+        </a><a href='/subjects/kazakh-language-and-literature'>
+            <img src='/img/subjects/kazakh-language-and-literature.png' alt ='ЕНТ язык обучения'  style='margin: 0px 10px;'>
+        </a>
+        <a href='/subjects/russian-language-and-literature'>
+            <img src='/img/subjects/russian-language-and-literature.png'  style='margin: 0px 10px;' alt ='ЕНТ язык обучения'>
+        </a>
+    `,
     html: true,
     confirmButtonText: "Назад"
     });
@@ -319,7 +336,17 @@
     document.querySelector('.popup2').onclick = function(){
     swal({
     title: "Иностранные языки",
-    text: "<a href='/predmety/23'><img src='/subject/angl.png' style='margin: 0px 10px;' alt ='ЕНТ Английский язык'></a><a href='/predmety/29'><img src='/subject/nemec.png'  style='margin: 0px 10px;' alt ='Единое национальное тестирование немецкий язык'></a><a href='/predmety/30'><img src='/subject/franc.png'  style='margin: 0px 10px;' alt ='ЕНТ Французский язык'></a>",
+    text: `
+        <a href='/subjects/english'>
+            <img src='/img/subjects/english.png' style='margin: 0px 10px;' alt ='ЕНТ Английский язык'>
+        </a>
+        <a href='/subjects/german'>
+            <img src='/img/subjects/german.png'  style='margin: 0px 10px;' alt ='Единое национальное тестирование немецкий язык'>
+        </a>
+        <a href='/subjects/french'>
+            <img src='/img/subjects/french.png'  style='margin: 0px 10px;' alt ='ЕНТ Французский язык'>
+        </a>
+    `,
     html: true,
     confirmButtonText: "Назад"
     });
