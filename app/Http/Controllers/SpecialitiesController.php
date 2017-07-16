@@ -19,14 +19,16 @@ class SpecialtiesController extends Controller
             ->with(['direction'])
             ->paginate(15);
 
-        return view('specialties.index', compact('specialties'));
+        return view('specialties.index', compact('specialties', 'direction'));
     }
 
     public function show(Specialty $specialty)
     {
-         $professions = $specialty->professions()
-            ->orderBy('title')
-            ->get();
+         $specialty->load(['professions' => function ($q) {
+            $q
+                ->orderBy('title')
+                ->get();
+         }]);
 
         return view('specialties.show', compact('specialty'));
     }

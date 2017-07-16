@@ -54,9 +54,11 @@ Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.sho
 Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 
+/**
+ * Professions
+ */
 
-
-
+Route::get('/professions/{profession}', 'ProfessionsController@show')->name('professions.show');
 
 
 
@@ -92,16 +94,6 @@ Route::get('/testent', function () {
 Route::get('/grant', function () {
     return view('grant');
 });
-Route::get('/professions_list', 'Professions\ProfessionsController@index')->name('professions_list');
-
-Route::get('/professions/{profession}', 'Professions\ProfessionsController@show')->name('profession.show');
-Route::get('/professions/search', 'Professions\ProfessionsController@search')
-    ->name('professions.search');
-Route::get('/professions', function () {
-    return view('professions');
-});
-
-Route::get('/professions/{profession}', 'Professions\ProfessionsController@show')->name('profession.show');
 
 Auth::routes();
 

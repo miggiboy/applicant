@@ -9,7 +9,7 @@
       <hr size="1" color="#ff831f">
       <hr size="1" color="#ff5500">
       <hr size="1" color="#ffb47a">
-      <form action="{{ route('specialties.search') }}" method="get">
+      <form action="" method="get">
           <p>
           <div class="ui icon input" style="height: 43px;">
               <input type="text" name = "query" value="{{ old('query') }}" class="prompt" placeholder="Введите название или код специальности ..."  style="width: 864px;margin-right: 12px;">

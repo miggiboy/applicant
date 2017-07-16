@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Professions;
-
-use App\Profession;
-use App\ProfDirection;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProfessionRequest;
-use App\Http\Requests\UpdateProfessionRequest;
 use App\Http\Controllers\Controller;
+
+use App\Models\Profession\{
+    Profession,
+    ProfessionCategories
+};
+
+use App\Modules\Search\{
+    ProfessionSearch
+};
 
 class ProfessionsController extends Controller
 {
@@ -20,10 +24,14 @@ class ProfessionsController extends Controller
      */
     public function index()
     {
-        return view('professions.index', [
-            'profDirections'    => ProfDirection::all()->sortBy('title'),
-            'professions'       => Profession::orderBy('title')->paginate(15),
-        ]);
+        $professions = ProfessionSearch::applyFilters($request)
+            ->orderBy('title')
+            ->with(['category'])
+            ->paginate(15);
+
+        $categories = ProfessionCategories::all()->sortBy('title');
+
+        return view('professions.index', compact('professions', 'categories'));
     }
 
     /**
@@ -45,6 +53,8 @@ class ProfessionsController extends Controller
 
         return view('professionslist', compact('professions', 'direction'));
     }
+
+
     public function search(Request $request)
     {
         $q = Profession::query();
