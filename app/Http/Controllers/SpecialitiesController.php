@@ -12,18 +12,23 @@ use App\Models\Specialty\{
 
 class SpecialtiesController extends Controller
 {
-    public function index($institutionType)
+    public function index(SpecialtyDirection $direction)
     {
-        $directions = SpecialtyDirection::of($institutionType)
-            ->orderBy('title')
-            ->get();
-
-        $specialties = Specialty::of($institutionType)
+        $specialties = Specialty::inDirection($direction->id)
             ->orderBy('title')
             ->with(['direction'])
             ->paginate(15);
 
-        return view('specialties.index', compact('specialties', 'directions'));
+        return view('specialties.index', compact('specialties'));
+    }
+
+    public function show(Specialty $specialty)
+    {
+         $professions = $specialty->professions()
+            ->orderBy('title')
+            ->get();
+
+        return view('specialties.show', compact('specialty'));
     }
 
     public function specialtieslist(Direction $direction, Request $request)
@@ -33,14 +38,6 @@ class SpecialtiesController extends Controller
             ->paginate(15);
 
         return view('specialtieslist', compact('specialties', 'direction'));
-    }
-    public function show(Specialty $specialty)
-    {
-         $professions = $specialty->professions()
-            ->orderBy('title')
-            ->get();
-
-        return view('specialties.show', compact('specialty', 'professions'));
     }
 
     public function search(Request $request)

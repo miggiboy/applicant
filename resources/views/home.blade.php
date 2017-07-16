@@ -44,7 +44,7 @@
             <H3>Учебные заведения</H3>
         </div>
     </a>
-    <a href="{{ url('/specialities') }}">
+    <a href="{{ url('/specialty-directions') }}">
         <div class="Micon_block">
             <div class="Micon">
                 <div class="Micon_img">

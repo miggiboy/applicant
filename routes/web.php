@@ -24,13 +24,16 @@ Route::group(['prefix' => '/institutions/{institutionType}'], function() {
 /**
  * Specialties
  */
-Route::group(['prefix' => '/{institutionType}-specialties'], function () {
 
-    Route::get('', 'SpecialtiesController@index')->name('specialties.index');
-    Route::get('/{specialty}', 'SpecialtiesController@show')->name('specialties.show');
+Route::get('/specialties/directions/{direction}', 'SpecialtiesController@index')->name('specialties.index');
+Route::get('/specialties/{specialty}', 'SpecialtiesController@show')->name('specialties.show');
 
-});
+/**
+ * Specialty Direction Groups
+ */
 
+Route::get('/specialty-directions', 'SpecialtyDirectionsController@index')->name('specialties.directions.index');
+Route::get('/specialty-directions/{group}', 'SpecialtyDirectionsController@show')->name('specialties.directions.show');
 
 /**
  * UNT
@@ -80,31 +83,12 @@ Route::get('/mostwantedworld', function () {
 Route::get('/mostwantedkz', function () {
     return view('mostwantedkz');
 });
+
 Route::get('/testent', function () {
     return view('testent');
 });
-Route::get('/educationandgum', function () {
-    return view('educationandgum');
-});
 
-Route::get('/serviceandsociety', function () {
-    return view('serviceandsociety');
-});
-Route::get('/natural', function () {
-    return view('natural');
-});
-Route::get('/serviceandsocietyc', function () {
-    return view('serviceandsocietyc');
-});
-Route::get('/technique', function () {
-    return view('technique');
-});
-Route::get('/agriculture', function () {
-    return view('agriculture');
-});
-Route::get('/mandatorysubjects', function () {
-    return view('mandatorysubjects');
-});
+
 Route::get('/grant', function () {
     return view('grant');
 });
