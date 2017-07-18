@@ -11,6 +11,6 @@ class FeedbackController extends Controller
     {
         \Mail::to(config('mail.gmail'))->send(new FeedbackReceived($request));
 
-        return ['status' => 'ok'];
+        return response()->json(['status' => 'ok'], 200);
     }
 }

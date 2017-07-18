@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article\{
-    Article,
-    Category
-};
+use App\Models\Article\Article;
 
 class HomeController extends Controller
 {

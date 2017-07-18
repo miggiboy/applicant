@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\City\City;
-use App\Models\Institution\Institution;
 use App\Models\Specialty\Specialty;
+use App\Models\Institution\Institution;
 
 use App\Modules\Search\{
     InstitutionSearch

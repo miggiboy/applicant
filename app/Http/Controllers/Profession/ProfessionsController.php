@@ -37,24 +37,4 @@ class ProfessionsController extends Controller
     {
         return view('professions.show', compact('profession'));
     }
-
-    public function search(Request $request)
-    {
-        $q = Profession::query();
-
-        if (request()->has('query')) {
-            $q->like(request('query'));
-        }
-
-        if (request()->has('direction')) {
-            $q->ofDirection(request('direction'));
-        }
-
-        $professions = $q->orderBy('title')->paginate(15);
-        $profDirections = ProfDirection::all()->sortBy('title');
-
-        $request->flashOnly(['query', 'direction']);
-
-        return view('professions.index', compact('professions', 'profDirections'));
-    }
 }

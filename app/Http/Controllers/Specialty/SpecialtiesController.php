@@ -33,33 +33,6 @@ class SpecialtiesController extends Controller
         return view('specialties.show', compact('specialty'));
     }
 
-    public function search(Request $request)
-    {
-        $q = Specialty::query();
-
-        if (request()->has('query')) {
-            $q->like(request('query'));
-        }
-
-        if (request()->has('direction')) {
-            $q->inDirection(request('direction'));
-        }
-
-        if ($request->has('inst')) {
-            $q->ofInstitution($request->inst);
-        }
-
-        $directions = Direction::where('institution', (bool) $request->inst)
-                ->orderBy('title')
-                ->get();
-
-        $specialties = $q->orderBy('title')->with(['direction'])->paginate(15);
-
-        $request->flashOnly(['query', 'direction', 'inst']);
-
-        return view('specialties_search', compact('specialties', 'directions'));
-    }
-
     public function autocomplete(Request $request){
 
         $specialties = Specialty::select('id as url', 'title', 'code')
