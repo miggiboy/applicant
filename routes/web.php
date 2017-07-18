@@ -25,15 +25,18 @@ Route::group(['prefix' => '/institutions/{institutionType}'], function() {
  * Specialties
  */
 
-Route::get('/specialties/directions/{direction}', 'SpecialtiesController@index')->name('specialties.index');
-Route::get('/specialties/{specialty}', 'SpecialtiesController@show')->name('specialties.show');
+Route::group(['namespace' => 'Specialty'], function () {
 
-/**
- * Specialty Direction Groups
- */
+    Route::get('/specialties/directions/{direction}', 'SpecialtiesController@index')->name('specialties.index');
+    Route::get('/specialties/{specialty}', 'SpecialtiesController@show')->name('specialties.show');
 
-Route::get('/specialty-directions', 'SpecialtyDirectionsController@index')->name('specialties.directions.index');
-Route::get('/specialty-directions/{group}', 'SpecialtyDirectionsController@show')->name('specialties.directions.show');
+    /**
+     * Specialty Direction Groups
+     */
+
+    Route::get('/specialty-directions', 'SpecialtyDirectionsController@index')->name('specialties.directions.index');
+    Route::get('/specialty-directions/{group}', 'SpecialtyDirectionsController@show')->name('specialties.directions.show');
+});
 
 /**
  * UNT
@@ -61,14 +64,20 @@ Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.sho
 /**
  * Professions
  */
-Route::get('/professions/categories', function () {
-    return view('professions.categories');
+
+Route::group(['namespace' => 'Profession'], function () {
+
+    Route::get('/professions/categories', function () {
+        return view('professions.categories');
+    });
+
+    Route::get('/professions/categories/{category}', 'ProfessionsController@index')->name('professions.index');
+    Route::get('/professions/{profession}', 'ProfessionsController@show')->name('professions.show');
+
+    Route::get('/professions/lists/{list}', 'ProfessionListsController@show')->name('professions.lists.show');
+
 });
 
-Route::get('/professions/categories/{category}', 'ProfessionsController@index')->name('professions.index');
-Route::get('/professions/{profession}', 'ProfessionsController@show')->name('professions.show');
-
-Route::get('/professions/lists/{list}', 'ProfessionListsController@show')->name('professions.lists.show');
 
 /**
  * Feedback

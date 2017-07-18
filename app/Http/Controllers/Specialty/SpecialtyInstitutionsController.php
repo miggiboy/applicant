@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Specialty;
 
 use Illuminate\Http\Request;
 use App\Speciality;
@@ -16,7 +16,7 @@ class SpecialtyInstitutionsController extends Controller
         $qualifications='';
         if($specialty->insitutionType() == 'universities'){
           $specialty->load(['universities' => function ($query) {
-              
+
             if (request()->has('city')) {
             $query->where('city_id', request('city'));
             }
@@ -27,7 +27,7 @@ class SpecialtyInstitutionsController extends Controller
              $institutions=$specialty->universities;
         }
         else{
-            
+
             $specialty->load(['colleges' => function ($query) {
             if (request()->has('city')) {
             $query->where('city_id', request('city'));
@@ -44,7 +44,7 @@ class SpecialtyInstitutionsController extends Controller
             }
         }
         $cities = City::all()->sortBy('title');
-       
+
         return view('linked_specialities', compact('specialty', 'institutions', 'cities', 'qualifications'));
     }
 }

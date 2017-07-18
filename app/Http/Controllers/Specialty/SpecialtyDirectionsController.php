@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Specialty;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SpecialtyDirectionsController extends Controller
 {
