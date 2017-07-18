@@ -41,7 +41,9 @@ Route::get('/specialty-directions/{group}', 'SpecialtyDirectionsController@show'
 
 Route::get('/ent', 'UNTController@index')->name('ent');
 
-Route::get('/testent', 'UNTController@testent')->name('testent');
+Route::get('/testent', function () {
+    return view('UNT.testent');
+});
 
 /**
  * Subjects
@@ -53,15 +55,20 @@ Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.sho
  * Articles
  */
 
-Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 
 /**
  * Professions
  */
+Route::get('/professions/categories', function () {
+    return view('professions.categories');
+});
 
+Route::get('/professions/categories/{category}', 'ProfessionsController@index')->name('professions.index');
 Route::get('/professions/{profession}', 'ProfessionsController@show')->name('professions.show');
 
+Route::get('/professions/lists/{list}', 'ProfessionListsController@show')->name('professions.lists.show');
 
 /**
  * Feedback

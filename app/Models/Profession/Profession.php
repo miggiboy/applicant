@@ -51,9 +51,9 @@ class Profession extends Model
      * @param  integer $direction
      * @return \Illuminate\Support\Collection
      */
-    public function scopeInCategory($query, $category)
+    public function scopeOf($query, $category)
     {
-        return $query->where('category_id', $category);
+        return $query->where('category_id', is_object($category) ? $category->id : $category );
     }
 
     public function category()

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Subject\Subject;
 
 class UNTController extends Controller
@@ -13,10 +11,5 @@ class UNTController extends Controller
         $subjects = Subject::all();
 
         return view('UNT.index', compact('subjects'));
-    }
-
-    public function testent()
-    {
-        return view('UNT.testent');
     }
 }

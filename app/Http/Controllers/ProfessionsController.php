@@ -10,28 +10,21 @@ use App\Models\Profession\{
     ProfessionCategories
 };
 
-use App\Modules\Search\{
-    ProfessionSearch
-};
-
 class ProfessionsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, ProfessionCategories $category)
     {
-        $professions = ProfessionSearch::applyFilters($request)
+        $professions = Profession::of($category)
             ->orderBy('title')
             ->with(['category'])
             ->paginate(15);
 
-        $categories = ProfessionCategories::all()->sortBy('title');
-
-        return view('professions.index', compact('professions', 'categories'));
+        return view('professions.index', compact('professions', 'category'));
     }
 
     /**
@@ -44,16 +37,6 @@ class ProfessionsController extends Controller
     {
         return view('professions.show', compact('profession'));
     }
-
-    public function proflist(ProfDirection $direction, Request $request)
-    {
-        $professions = Profession::where('prof_direction_id', $direction->id)
-            ->orderBy('title')
-            ->paginate(15);
-
-        return view('professionslist', compact('professions', 'direction'));
-    }
-
 
     public function search(Request $request)
     {

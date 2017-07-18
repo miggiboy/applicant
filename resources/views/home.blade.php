@@ -54,7 +54,7 @@
             <H3>Специальности</H3>
         </div>
     </a>
-    <a href="{{ url('/professions') }}">
+    <a href="{{ url('/professions/categories') }}">
         <div class="Micon_block">
             <div class="Micon">
                 <div class="Micon_img">
@@ -142,22 +142,22 @@
         <hr size="1" color="#ff5500">
         <hr size="1" color="#ffb47a">
         <div class="content_item">
-            <a href="{{ url('/wellpaidkz') }}">
+            <a href="{{ route('professions.lists.show', 'wellpaidkz') }}">
                 <p style="margin:0px;"><i class="money icon" style="color: #565554;"></i>Высокооплачиваемые в KZ</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ url('/mostwantedkz') }}">
+            <a href="{{ route('professions.lists.show', 'mostwantedkz') }}">
                 <p style="margin:0px;"><i class="line chart icon" style="color: #565554;"></i>Востребованные в KZ</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ url('/wellpaidworld') }}">
+            <a href="{{ route('professions.lists.show', 'wellpaidworld') }}">
                 <p style="margin:0px;"><i class="dollar icon" style="color: #565554;"></i>Высокооплачиваемые в мире</p>
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ url('/mostwantedworld') }}">
+            <a href="{{ route('professions.lists.show', 'mostwantedworld') }}">
                 <p style="margin:0px;"><i class="world icon" style="color: #565554;"></i>Востребованные в мире</p>
             </a>
         </div>
