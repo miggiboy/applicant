@@ -39,7 +39,7 @@
                     <a href="{{ route('institutions.index', 'colleges') }}">
                         <div class="menu_item">Колледжи</div>
                     </a>
-                    <a href="{{ url('/specialty-directions') }}">
+                    <a href="{{ route('specialties.directions.index') }}">
                         <div class="menu_item">Специальности</div>
                     </a>
                     <a href="{{ url('/ent') }}">

@@ -29,14 +29,14 @@
           <div class="ui grid" style="margin-top: 15px;">
               <div class="one wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/educationandgum') }}">
+                  <a href="{{ route('specialties.directions.groups.show', 'educationandgum') }}">
                       <h3><i class="student icon"></i>Образование и Гуманитарные науки</h3>
                   </a>
                   <p>Если Вы хотите стать учителем и педагогом, или же Вас привлекают гуманитарные науки, то Вам сюда</p>
               </div>
               <div class="two wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/serviceandsociety')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'serviceandsociety')}}">
                       <h3><i class="users icon"></i> Услуги и науки об Обществе</h3>
                   </a>
                   <p>Хотите стать специалистом в сфере услуг? Или Вас привлекает юриспруденция, бизнес и менеджмент?
@@ -62,7 +62,7 @@
               <div class="one wide column"></div>
               <div class="one wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/agriculture')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'agriculture')}}">
                       <h3><i class="paw icon"></i>Сельскохозяйственные науки и Ветеринария</h3>
                   </a>
                   <p>Любите работать с землей или животными? Тогда Вам должны понравится специальности приведенные в этом разделе.</p>
@@ -108,7 +108,7 @@
               </div>
               <div class="two wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/serviceandsocietyc')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'serviceandsocietyc')}}">
                       <h3><i class="users icon"></i> Услуги и науки об Обществе</h3>
                   </a>
                   <p>Хотите стать специалистом в сфере услуг? Или Вас привлекает юриспруденция, бизнес и менеджмент?
@@ -118,7 +118,7 @@
               <div class="one wide column"></div>
               <div class="one wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/technique')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'technique')}}">
                       <h3><i class="settings icon"></i>Технические науки и технологии</h3>
                   </a>
                   <p>Для тех, кто мечтает стать инжинером, программистом или хочет найти себя в энергетике, строительстве, машиностроении и во многих других технических отраслях. </p>
@@ -150,7 +150,7 @@
               <div class="one wide column"></div>
               <div class="one wide column"></div>
               <div class="six wide column">
-                  <a href="{{ url('/specialty-directions/natural')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'natural')}}">
                       <h3><i class="world icon"></i>Естественные науки</h3>
                   </a>
                   <p>Вам нравится физика или химия, хотите изучать науки связанные с природой? Тогда пополните число специалистов по естественным наукам </p>
