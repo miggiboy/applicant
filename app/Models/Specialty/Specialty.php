@@ -67,7 +67,7 @@ class Specialty extends Model
         return (bool) $this->subjects()->count();
     }
 
-    public function otherSubject(Subject $subject)
+    public function getAnother(Subject $subject)
     {
         return $this->subjects
             ->where('id', '!=', $subject->parent_id_or_id)

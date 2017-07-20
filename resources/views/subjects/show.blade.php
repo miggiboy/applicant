@@ -45,17 +45,17 @@
                       @foreach ($specialties as $specialty)
                       <tr>
                           <td class="single line">
-                              <a href="{{ route('specialties.show', [$specialty->institution_type, $specialty]) }}">
+                              <a href="{{ route('specialties.show', $specialty) }}">
                                 {{ $specialty->title }}
                               </a>
                           </td>
                           <td>
                               @php
-                                  $secondSubject = $specialty->otherSubject($subject);
+                                  $secondSubject = $specialty->getAnother($subject);
                               @endphp
 
                               @if ($secondSubject)
-                                  <a href="{{ route('subjects.show',  $secondSubject) }}" class="custom-link">
+                                  <a href="{{ route('subjects.show',  $secondSubject) }}">
                                       {{ $secondSubject->title }}
                                   </a>
                               @endif
@@ -76,17 +76,17 @@
               @foreach ($files_in_category as $file)
                 <div id='doc'>
                   <div id="doc_icon">
-                      <a href="{{ $file->path }}" target="_blank">
-                      @if (file_exists($path = "/img/icons/file-icons/{$file->extension}.svg"))
-                        <img src="{{ $path }}" width='40' alt="doc">
-                      @else
-                        <img src="/img/icons/file-icons/file.svg">
-                      @endif
+                      <a href="{{ $file->path }}" download>
+                        @if (file_exists($path = "/img/icons/file-icons/{$file->extension}.svg"))
+                          <img src="{{ $path }}" width='40' alt="doc">
+                        @else
+                          <img src="/img/icons/file-icons/file.svg">
+                        @endif
                       </a>
                   </div>
                   <div id="doc_title">
                       <p>
-                        <a href="{{ $file->getUrl() }}" target="_blank">
+                        <a href="{{ $file->getUrl() }}" download>
                           <b style="color:#194f67;">{{ $file->name }}</b><br>
                         </a>
                       </p>
