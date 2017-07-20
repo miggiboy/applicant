@@ -14,9 +14,9 @@ class SpecialtiesController extends Controller
 {
     public function index(SpecialtyDirection $direction)
     {
-        $specialties = Specialty::inDirection($direction->id)
+        $specialties = Specialty::in($direction)
             ->orderBy('title')
-            ->with(['direction'])
+            ->with('direction')
             ->paginate(15);
 
         return view('specialties.index', compact('specialties', 'direction'));
@@ -35,15 +35,15 @@ class SpecialtiesController extends Controller
 
     public function autocomplete(Request $request){
 
-        $specialties = Specialty::select('id as url', 'title', 'code')
+        $specialties = Specialty::select('id as url', 'title', 'code as description')
             ->like($request->input('query'))
             ->orderBy('title')
             ->get();
 
         $specialties = $specialties->each(function ($item, $key) {
-            $item->url = 'http://mustim09.beget.tech/specialties/' . $item->url;
+            $item->url = config('app.url') . '/specialties/' . $item->url;
         });
 
-        return response()->json(['specialties' => $specialties]);
+        return response()->json(['results' => $specialties]);
     }
 }

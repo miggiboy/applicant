@@ -38,9 +38,9 @@
     <hr size="1" color="#ff5500">
     <hr size="1" color="#ffb47a">
     <br>
-    @if ($institution->call_center)
+    @if ($institution->phone_number)
         <p style="color:#565554;margin:0px;">
-            <i class="call icon" style="color: #565554;"></i> {{ $institution->call_center }}
+            <i class="call icon" style="color: #565554;"></i> {{ $institution->phone_number }}
         </p>
     @endif
     @isset($institution->reception->email)

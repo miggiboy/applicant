@@ -33,7 +33,7 @@ class InstitutionsController extends Controller
         $specialties = Specialty::of($institutionType)
             ->getOnly('specialties')
             ->orderBy('title')
-            ->with(['direction'])
+            ->with('direction')
             ->get();
 
         return view('institutions.index', compact('institutions', 'cities', 'specialties'));

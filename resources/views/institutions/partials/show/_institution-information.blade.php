@@ -26,16 +26,27 @@
             <p>Основан в {{ $institution->foundation_year }} г.</p>
         @endif
     </div>
-    @isset($institution->has_dormitory)
+    @if (isset($institution->has_dormitory) || isset($institution->has_military_dep))
         <div id="vuz_info_2">
-            @if ($institution->has_dormitory)
-                <i class="add circle icon" style="color: #ff831f;"  title="Есть общежитие"></i>
-            @else
-                <i class="minus circle icon" style="color: #194f67;"  title="Нет общежития"></i>
-            @endif
-            <b style="color:#565554;">Общежитие</b>
+            @isset ($institution->has_dormitory )
+                @if ($institution->has_dormitory == true)
+                    <i class="add circle icon" style="color: #ff831f;"  title="Есть общежитие"></i>
+                @else
+                    <i class="minus circle icon" style="color: #194f67;"  title="Нет общежития"></i>
+                @endif
+                <b style="color:#565554;">Общежитие</b>
+            @endisset
+
+            @isset($institution->has_military_dep)
+                @if ($institution->has_military_dep == true)
+                    <i class="add circle icon" style="color: #ff831f;"  title="Есть военная кафедра"></i>
+                @else
+                    <i class="minus circle icon" style="color: #194f67;"  title="Нет военной кафедры"></i>
+                @endif
+                <b style="color:#565554;">Военная кафедра</b>
+            @endisset
         </div>
-    @endisset
+    @endif
 
     @if($institution->is_paid)
         @if ($institution->getMedia('*')->count())

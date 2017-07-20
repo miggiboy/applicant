@@ -109,7 +109,7 @@
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialties.index', 'sotsialnye-nauki-ekonomika-i-biznes') }}">
+            <a href="{{ route('specialties.index', 'estestvennye-nauki') }}">
                 <p style="margin:0px;"><i class="world icon" style="color: #565554;"></i>Естественные</p>
             </a>
         </div>
@@ -129,7 +129,7 @@
             </a>
         </div>
         <div class="content_item">
-            <a href="{{ route('specialties.index', 'estestvennye-nauki') }}">
+            <a href="{{ route('specialties.index', 'sotsialnye-nauki-ekonomika-i-biznes') }}">
                 <p style="margin:0px;"><i class="bar chart icon" style="color: #565554;"></i>Экономические</p>
             </a>
         </div>

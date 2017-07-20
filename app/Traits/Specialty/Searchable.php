@@ -10,11 +10,11 @@ trait Searchable
      * @param integer $direction
      * @return \Illuminate\Support\Collection
      */
-    public function scopeInDirection($query, $direction)
+    public function scopeIn($query, $direction)
     {
         return $query
             ->whereHas('direction', function($q) use ($direction) {
-                $q->where('id', $direction);
+                $q->where('id', is_object($direction) ? $direction->id : $direction);
             });
     }
 
