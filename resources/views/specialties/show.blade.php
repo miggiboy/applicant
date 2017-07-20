@@ -48,9 +48,8 @@
         <div class="one wide column"></div>
         <div class="five wide column" style="position: absolute; right: 35px; top: 190px;">
             <div class="ui segment" style="margin-top:-175px;">
-                <H3>Где учиться?</H3>
-                <a href=""
-                   class="header">
+                <h3>Где учиться?</h3>
+                <a href="{{ route('specialties.institutions.index', [$specialty->institution_type, $specialty]) }}" class="header">
                   Учебные заведения
                 </a>
             </div>

@@ -10,7 +10,7 @@ trait Searchable
      * @param integer $direction
      * @return \Illuminate\Support\Collection
      */
-    public function scopeIn($query, $direction)
+    public function scopeInDirection($query, $direction)
     {
         return $query
             ->whereHas('direction', function($q) use ($direction) {

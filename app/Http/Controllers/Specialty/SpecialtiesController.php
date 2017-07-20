@@ -14,7 +14,7 @@ class SpecialtiesController extends Controller
 {
     public function index(SpecialtyDirection $direction)
     {
-        $specialties = Specialty::in($direction)
+        $specialties = Specialty::inDirection($direction)
             ->orderBy('title')
             ->with('direction')
             ->paginate(15);

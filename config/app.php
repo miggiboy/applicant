@@ -242,6 +242,8 @@ return [
          * Custom aliases
          */
         'Translator' => App\Support\Lang\Translator::class,
+        'Specialty' => App\Models\Specialty\Specialty::class,
+        'Institution' => App\Models\Institution\Institution::class,
     ],
 
 ];

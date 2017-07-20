@@ -30,4 +30,12 @@ trait Searchable
     {
         return $query->where('city_id', $city);
     }
+
+    public function scopeWithSpecialty($query, $specialty)
+    {
+        return $query
+            ->whereHas('specialties', function ($q) use ($specialty) {
+                return $q->where('id', $specialty);
+            });
+    }
 }

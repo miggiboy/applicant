@@ -44,6 +44,7 @@ class InstitutionsController extends Controller
         $institution->load(['specialties' => function ($q) {
             $q
                 ->getOnly('specialties')
+                ->orderBy('title')
                 ->orderBy('pivot_specialty_id')
                 ->with(['qualifications', 'direction']);
         }]);
