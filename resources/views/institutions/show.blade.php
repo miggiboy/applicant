@@ -30,7 +30,7 @@
         </iframe>
     @endif
 </div>
-<div id="do_ent" style="margin-top: 20px;padding-top: 11px;padding-left: 28px;padding-right: 28px;">
+<div id="do_ent" style="margin-top: 20px; padding-top: 11px; padding-left: 28px; padding-right: 28px;">
     <p>
         <b style="color:#194f67;">Контакты колледжа</b><br>
     </p>

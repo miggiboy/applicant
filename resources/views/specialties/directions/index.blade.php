@@ -4,23 +4,7 @@
 
 @section('content')
   <div id="subpage">
-      <h1>Спецальности высшего и средне-специального образования</h1>
-      <p>В данном разделе Вы найдете список и информацию по специальстям для колледжей и ВУЗов. Так же Вы сможете найти учебные заведения, в которых присутствует выбранная Вами специальность. Если Вы ищете конкретную специальность - введите ее название в поле внизу и нажмите кнопку "найти". Или Вы можете найти интересующую Вас специальность в одной из категорий.</p>
-      <hr size="1" color="#ff831f">
-      <hr size="1" color="#ff5500">
-      <hr size="1" color="#ffb47a">
-      <form action="" method="get">
-          <p>
-          <div class="ui icon input" style="height: 43px;">
-              <input type="text" name = "query" value="{{ old('query') }}" class="prompt" placeholder="Введите название или код специальности ..."  style="width: 864px;margin-right: 12px;">
-              <i class="search icon"></i>
-              <input type="submit" value="Найти">
-          </div>
-          </p>
-      </form>
-      <hr size="1" color="#ff831f">
-      <hr size="1" color="#ff5500">
-      <hr size="1" color="#ffb47a">
+      @include ('specialties/partials/search_form_with_page_title')
       <div class="ui pointing secondary menu">
           <a class="item g active" data-tab="first">ВУЗ (бакалавриат)</a>
           <a class="item g" data-tab="second">Колледж</a>
@@ -172,8 +156,32 @@
 @endsection
 
 @section('script')
+  <script>
+      $('#search-input').search({
+          apiSettings: {
+              url: '{{ Config::get('app.url') }}/specialties/search?query={query}'
+         },
+         fields: {
+              results     : 'results',
+              title       : 'title',
+              description : 'description',
+              url         : 'url'
+          },
+          error : {
+            noResults   : 'Поиск не дал результатов',
+            serverError : 'Произошла ошибка при поиске...',
+          },
+          minCharacters : 2
+      });
+
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
   <script>
       $('.menu .item').tab();
+
+      $('.ui.dropdown').dropdown({
+          fullTextSearch: true
+      });
   </script>
 @endsection

@@ -71,31 +71,31 @@
             </thead>
             <tbody>
                 @foreach ($specialty->institutions as $institution)
-                <tr>
-                    <td>
-                        <h4 class="ui header">
-                            <div class="content">
-                                <a href="{{ route('institutions.show', [str_plural($institution->type), $institution]) }}">
-                                  {{ $institution->title }}
-                                </a>
-                                <div class="sub header"> {{ $institution->city->title }}</div>
-                            </div>
-                        </h4>
-                    </td>
-                    <td>
-                        {{ ($institution->pivot->form == '1') ? 'очная' : 'заочная' }}
-                    </td>
-                    <td>
-                        @if (isset($institution->pivot->study_price))
-                          @if ($institution->pivot->study_price == 0)
-                            Бюджет
-                          @elseif ($institution->pivot->study_price>1)
-                            {{ $institution->pivot->study_price }} тг
+                  <tr>
+                      <td>
+                          <h4 class="ui header">
+                              <div class="content">
+                                  <a href="{{ route('institutions.show', [str_plural($institution->type), $institution]) }}">
+                                    {{ $institution->title }}
+                                  </a>
+                                  <div class="sub header"> {{ $institution->city->title }}</div>
+                              </div>
+                          </h4>
+                      </td>
+                      <td>
+                          {{ ($institution->pivot->form == '1') ? 'очная' : 'заочная' }}
+                      </td>
+                      <td>
+                          @if (isset($institution->pivot->study_price))
+                            @if ($institution->pivot->study_price == 0)
+                              Бюджет
+                            @elseif ($institution->pivot->study_price>1)
+                              {{ $institution->pivot->study_price }} тг
+                            @endif
                           @endif
-                        @endif
-                    </td>
-                    <td class="right aligned collapsing">{{ $institution->pivot->study_period }}</td>
-                </tr>
+                      </td>
+                      <td class="right aligned collapsing">{{ $institution->pivot->study_period }}</td>
+                  </tr>
                 @endforeach
             </tbody>
         </table>

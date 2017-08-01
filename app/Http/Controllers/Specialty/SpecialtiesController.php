@@ -33,17 +33,20 @@ class SpecialtiesController extends Controller
         return view('specialties.show', compact('specialty'));
     }
 
-    public function autocomplete(Request $request){
+    public function search(Request $request)
+    {
+        $q = Specialty::query();
 
-        $specialties = Specialty::select('id as url', 'title', 'code as description')
-            ->like($request->input('query'))
-            ->orderBy('title')
-            ->get();
+        $q->getOnly('specialties');
 
-        $specialties = $specialties->each(function ($item, $key) {
-            $item->url = config('app.url') . '/specialties/' . $item->url;
-        });
+        if ($request->has('query')) {
+            $q->like($request->input('query'));
+        }
 
-        return response()->json(['results' => $specialties]);
+        $specialties = $q->orderBy('title')
+            ->with('direction')
+            ->paginate(15);
+
+        return view('specialties.search', compact('specialties'));
     }
 }

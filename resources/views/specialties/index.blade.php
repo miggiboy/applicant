@@ -10,20 +10,7 @@
       <hr size="1" color="#ff831f">
       <hr size="1" color="#ff5500">
       <hr size="1" color="#ffb47a">
-      @if (count($specialties))
-        <div class="ui large celled very relaxed selection list" >
-            @foreach ($specialties as $specialty)
-              <div class="university item" style="cursor: default;">
-                  <div class="content" style="margin-bottom: 13px;">
-                      <a  href="{{ route('specialties.show', $specialty) }}">
-                      <i class="teal student icon"></i>&nbsp;{{ $specialty->title }}
-                      </a>
-                  </div>
-              </div>
-            @endforeach
-        </div>
-      {{ $specialties->links() }}
-      @endif
+      @include ('specialties/partials/list')
   </div>
 @endsection
 
