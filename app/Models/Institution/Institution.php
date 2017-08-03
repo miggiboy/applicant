@@ -63,6 +63,11 @@ class Institution extends Model implements HasMediaConversions
         'university',
     ];
 
+    public function typeIs($type)
+    {
+        return strcmp($this->type, $type) === 0;
+    }
+
     /**
      * Retrieves institutions of $type type
      *

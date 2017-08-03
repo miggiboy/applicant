@@ -12,7 +12,11 @@
 @section('content')
 <div id="profile">
     @include ('institutions/partials/show/_institution-information')
-    @include ('institutions/partials/show/_institution-specialties')
+    @if ($institution->typeIs('university'))
+        @include ('institutions/partials/show/_university-specialties')
+    @else
+        @include ('institutions/partials/show/_college-specialties')
+    @endif
 </div>
 <div id="do_ent" style="padding-top:15px;">
     @if($institution->map)
