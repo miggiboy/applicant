@@ -7,7 +7,7 @@
                <i class="teal student icon"></i>
                {{ $specialty->getNameWithCodeOrName() }}
               </a><br>
-              {{ $specialty->direction->title }}
+              {{ $specialty->direction->is_active ? $specialty->direction->title : '' }}
             </div>
           </div>
       @endforeach

@@ -39,9 +39,9 @@
 
             @isset($institution->has_military_dep)
                 @if ($institution->has_military_dep == true)
-                    <i class="add circle icon" style="color: #ff831f;"  title="Есть военная кафедра"></i>
+                    <i class="add circle icon" style="color: #ff831f;" title="Есть военная кафедра"></i>
                 @else
-                    <i class="minus circle icon" style="color: #194f67;"  title="Нет военной кафедры"></i>
+                    <i class="minus circle icon" style="color: #194f67;" title="Нет военной кафедры"></i>
                 @endif
                 <b style="color:#565554;">Военная кафедра</b>
             @endisset
@@ -49,7 +49,7 @@
     @endif
 
     @if($institution->is_paid)
-        @if ($institution->getMedia('*')->count())
+        @if ($institution->media->count())
             <div style="width:690px;float:left;position:relative;">
                 <div id="gallery" style="display:none;">
                     @if ($logo = $institution->getMedia('logo'))

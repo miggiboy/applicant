@@ -1,13 +1,13 @@
 @extends ('layouts.base')
 
 @section ('title')
-  Специальность {{ $specialty->title }}
+  {{ $header = translate($specialty->type, 'i', 's', true) . ' "' . $specialty->title . '"' }}
 @endsection
 
 @section ('content')
 <div id="subpage">
     <div style="width:655px;">
-        <h1> Специальность "{{ $specialty->title }}" </h1>
+        <h1> {{ $header }} </h1>
     </div>
     <div class="ui very relaxed grid">
         <div class="ten wide column">
@@ -26,7 +26,7 @@
                       </div>
                   </div>
                 @endif
-                @isset($specialty->direction)
+                @if(isset($specialty->direction) && $specialty->direction->is_active)
                   <div class="seven wide column">
                       <h5 class="ui header">Наравление:</h5>
                       <div class="content">
@@ -35,7 +35,7 @@
                           </a>
                       </div>
                   </div>
-                @endisset
+                @endif
             </div>
             <br>
             <div class="ui divider"></div>

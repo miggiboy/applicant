@@ -5,14 +5,14 @@
 @endsection
 
 @section ('styles')
-<style>
-    .custom.container {
-    width:1000px;
-    margin: 0 auto;
-    margin-top: 40px;
-    margin-top: 60px;
-    }
-</style>
+  <style>
+      .custom.container {
+        width:1000px;
+        margin: 0 auto;
+        margin-top: 40px;
+        margin-top: 60px;
+      }
+  </style>
 @endsection
 
 @section ('content')
@@ -29,11 +29,12 @@
             method="get">
 
           <div class="ui action input">
-              @if($institutionType == 'college')
+              @if ($institutionType == 'college')
                 <select class="ui compact selection dropdown" id="select" name="qualification" style="width: 200px;">
                     <option value=" " selected="selected">Все Квалификации</option>
-                    @foreach ($qualifications as $qualification)
-                      <option value="{{ $qualification->id }}">
+                    @foreach ($specialty->qualifications as $qualification)
+                      <option value="{{ $qualification->id }}"
+                              {{ request('qualification') == $qualification->id ? 'selected' : '' }}>
                         {{ $qualification->title }}
                       </option>
                     @endforeach
@@ -43,14 +44,20 @@
               <select class="ui compact selection dropdown" id="select" name="city" style="width: 200px;">
                   <option value=" " selected="selected">Все города</option>
                   @foreach ($cities as $city)
-                    <option value="{{ $city->id }}">{{ $city->title }}</option>
+                    <option value="{{ $city->id }}"
+                            {{ request('city') == $city->id ? 'selected' : '' }}>
+                      {{ $city->title }}
+                    </option>
                   @endforeach
               </select>
 
               <select class="ui compact selection dropdown" id="select" name="study_form" style="width: 162px;">
                   <option value=" " selected="selected">Форма обучения</option>
                   @foreach (Specialty::studyForms() as $form)
-                    <option value="{{ $form }}">{{ translate($form) }}</option>
+                    <option value="{{ $form }}"
+                            {{ request('study_form') == $form ? 'selected' : '' }}>
+                      {{ translate($form) }}
+                    </option>
                   @endforeach
               </select>
               <input type="submit"
