@@ -16,31 +16,9 @@
             </thead>
             <tbody>
                 @foreach ($institution->specialties as $specialty)
-                <tr>
-                    <td>
-                        <a href="{{ route('specialties.show', $specialty) }}">
-                            {{ $specialty->title }}
-                        </a>
-                    </td>
-                    <td class="single line">
-                        {{ $specialty->code }}
-                    </td>
-                    <td>
-                        @isset($specialty->pivot->study_price)
-                            {{ $specialty->pivot->study_price }} тг
-                        @endisset
-                    </td>
-                    <td>
-                        @isset($specialty->pivot->study_period)
-                            {{ $specialty->pivot->study_period }} года
-                        @endisset
-                    </td>
-                    <td>
-                        @isset($specialty->pivot->form)
-                            {{ translate($specialty->pivot->form, 'i', 's', true) }}
-                        @endisset
-                    </td>
-                </tr>
+                    @include ('institutions/partials/show/_in_table_specialty', [
+                        'model' => $specialty
+                    ])
                 @endforeach
             </tbody>
         </table>

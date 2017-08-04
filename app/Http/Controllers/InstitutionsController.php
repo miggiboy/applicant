@@ -33,7 +33,6 @@ class InstitutionsController extends Controller
         $specialties = Specialty::of($institutionType)
             ->getOnly('specialties')
             ->orderBy('title')
-            ->with('direction')
             ->get();
 
         return view('institutions.index', compact('institutions', 'cities', 'specialties'));
@@ -41,16 +40,24 @@ class InstitutionsController extends Controller
 
     public function show($institutionType, Institution $institution)
     {
-        $institution->load(['specialties_distinct' => function ($q) {
-            $q
-                ->orderBy('title')
-                ->orderBy('pivot_specialty_id')
-                ->with(['qualifications', 'direction']);
-        }, 'qualifications' => function ($q) {
-            $q
-                ->orderBy('title')
-                ->orderBy('pivot_specialty_id');
-        }]);
+        if ($institution->typeIs('college')) {
+            $institution->load(['specialties_distinct' => function ($q) {
+                $q
+                    ->orderBy('title')
+                    ->orderBy('pivot_specialty_id')
+                    ->with('qualifications');
+            }, 'qualifications' => function ($q) {
+                $q
+                    ->orderBy('title')
+                    ->orderBy('pivot_specialty_id');
+            }]);
+        } else {
+            $institution->load(['specialties' => function ($q) {
+                $q
+                    ->orderBy('title')
+                    ->orderBy('pivot_specialty_id');
+            }]);
+        }
 
         return view('institutions.show', compact('institution'));
     }
