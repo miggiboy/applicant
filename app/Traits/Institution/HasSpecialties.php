@@ -23,29 +23,12 @@ trait HasSpecialties
             ->count();
     }
 
-    public function getSpecialtiesByQualifications()
+    public function hasSpecialtyAtForm($specialty, $studyForm)
     {
-        // Get institution qualifications
-        $qualifications = $this->qualifications()
-            ->with('specialty')
-            ->get();
-
-        dump($qualifications);
-
-        // Group them by specialties
-
-        $specialties = collect($this->specialties_distinct()->get());
-
-        foreach ($qualifications as $qualification) {
-            if (! $specialties->contains($qualification->specialty)) {
-                $specialties->push($qualification->specialty);
-            }
-        }
-
-        dump($specialties->filter());
-
-        // return collection of specialties with attached qualifications
-        return $specialties;
+        return (bool) $this->specialties()
+            ->wherePivot('specialty_id', get_id($specialty))
+            ->wherePivot('form', $studyForm)
+            ->count();
     }
 
     public function qualifications()
@@ -58,11 +41,14 @@ trait HasSpecialties
 
     public function specialties()
     {
-        return $this->belongsToMany(Specialty::class)->withPivot('study_price', 'study_period', 'form');
+        return $this->belongsToMany(Specialty::class)
+            ->withPivot('study_price', 'study_period', 'form');
     }
 
     public function specialties_distinct()
     {
-        return $this->belongsToMany(Specialty::class)->groupBy('specialty_id');
+        return $this->belongsToMany(Specialty::class)
+            ->where('type', 'specialty')
+            ->groupBy('specialty_id');
     }
 }

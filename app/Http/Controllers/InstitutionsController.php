@@ -41,16 +41,15 @@ class InstitutionsController extends Controller
 
     public function show($institutionType, Institution $institution)
     {
-        $institution->getSpecialtiesByQualifications();
-
-        return;
-
         $institution->load(['specialties_distinct' => function ($q) {
             $q
-                ->getOnly('specialties')
                 ->orderBy('title')
                 ->orderBy('pivot_specialty_id')
                 ->with(['qualifications', 'direction']);
+        }, 'qualifications' => function ($q) {
+            $q
+                ->orderBy('title')
+                ->orderBy('pivot_specialty_id');
         }]);
 
         return view('institutions.show', compact('institution'));

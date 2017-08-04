@@ -101,7 +101,6 @@ class Institution extends Model implements HasMediaConversions
         return 'Казахстан, ' . $this->city->title . ', ' . ($this->address ?: $this->title);
     }
 
-
     /**
      * Checks if this institution has reception committee
      *

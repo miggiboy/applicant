@@ -74,6 +74,11 @@ class Specialty extends Model
             ->first();
     }
 
+    public function qualificationsOf($institution)
+    {
+        return $institution->qualifications->where('parent_id', $this->id);
+    }
+
     /**
      * Returns specialty name with specialty code if the code
      * is present in the DB
