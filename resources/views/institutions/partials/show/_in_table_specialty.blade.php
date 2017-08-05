@@ -9,7 +9,7 @@
     </td>
     <td>
         @if ($model->pivot->study_price === 0)
-            бюджет
+            <b style="color:#ff831f">Бюджет</b>
         @else
             {{ $model->pivot->study_price }}
         @endif

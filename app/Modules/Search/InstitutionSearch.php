@@ -19,12 +19,14 @@ class InstitutionSearch
             $q->like(request('query'));
         }
 
-        if ($request->has('city')) {
-            $q->in($request->city);
-        }
-
         if ($request->has('specialty')) {
             $q->withSpecialty($request->specialty);
+        }
+
+        if ($request->has('city')) {
+            $q->in($request->city);
+
+            $q->orderBy('paid_rating', 'desc'); // This line doesn't belong here!!
         }
 
         return $q;

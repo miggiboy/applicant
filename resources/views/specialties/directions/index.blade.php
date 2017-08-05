@@ -92,7 +92,7 @@
               </div>
               <div class="two wide column"></div>
               <div class="six wide column">
-                  <a href="{{ route('specialties.directions.groups.show', 'serviceandsocietyc')}}">
+                  <a href="{{ route('specialties.directions.groups.show', 'serviceandsocietycollege')}}">
                       <h3><i class="users icon"></i> Услуги и науки об Обществе</h3>
                   </a>
                   <p>Хотите стать специалистом в сфере услуг? Или Вас привлекает юриспруденция, бизнес и менеджмент?

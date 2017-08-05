@@ -15,8 +15,8 @@
           @foreach ($professions as $profession)
           <div class="item" style="cursor: default;">
               <div class="content">
-                  <a class="header" href="{{ route('professions.show', $profession) }}">
-                    <i class="teal student icon"></i>{{$profession->title}}
+                  <a class="header" href="{{ route('professions.show', $profession) }}" style="font-size: 15px;">
+                    <i class="teal student icon"></i> {{ $profession->title }}
                   </a>
               </div>
           </div>

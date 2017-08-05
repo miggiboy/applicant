@@ -173,7 +173,7 @@
             </a>
         </div>
         <div class="content_item">
-            <a href="grant">
+            <a href="{{ route('articles.custom.show', 'kak-poluchit-grant') }}">
                 <p style="margin:0px;"><i class="trophy icon" style="color: #565554;"></i>Как получить грант?</p>
             </a>
         </div>

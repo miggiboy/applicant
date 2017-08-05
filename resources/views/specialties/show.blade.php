@@ -26,15 +26,28 @@
                       </div>
                   </div>
                 @endif
-                @if(isset($specialty->direction) && $specialty->direction->is_active)
-                  <div class="seven wide column">
-                      <h5 class="ui header">Наравление:</h5>
-                      <div class="content">
-                          <a href="{{ route('specialties.index', $specialty->direction)}}">
-                            {{ $specialty->direction->title }}
-                          </a>
-                      </div>
-                  </div>
+                @if ($specialty->typeIs('qualification'))
+                  @if(isset($specialty->specialty))
+                    <div class="seven wide column">
+                        <h5 class="ui header">Специальность:</h5>
+                        <div class="content">
+                            <a href="{{ route('specialties.show', $specialty->specialty)}}">
+                              {{ $specialty->specialty->title }}
+                            </a>
+                        </div>
+                    </div>
+                  @endif
+                @else
+                  @if(isset($specialty->direction) && $specialty->direction->is_active)
+                    <div class="seven wide column">
+                        <h5 class="ui header">Наравление:</h5>
+                        <div class="content">
+                            <a href="{{ route('specialties.index', $specialty->direction)}}">
+                              {{ $specialty->direction->title }}
+                            </a>
+                        </div>
+                    </div>
+                  @endif
                 @endif
             </div>
             <br>

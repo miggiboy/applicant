@@ -1,7 +1,7 @@
 @extends ('layouts.base')
 
 @section ('title')
-  {{ translate($institutionType, 'i', 'p', true) . ' со специальностью ' . $specialty->title }}
+  {{ translate($institutionType, 'i', 'p', true) . ' с ' . translate($specialty->type, 't', 's') . $specialty->title }}
 @endsection
 
 @section ('styles')
@@ -18,7 +18,7 @@
 @section ('content')
   <div class="ui custom container">
       <h2  style="text-align:center; margin-bottom: 40px;">
-          {{ translate($institutionType, 'i', 'p', true) . ' со специальностью ' }} <br>
+          {{ translate($institutionType, 'i', 'p', true) . ' с ' . translate($specialty->type, 't', 's') }} <br>
           <a href="{{ route('specialties.show', $specialty) }}">
             {{ str_limit($specialty->title, 50) }}
           </a>
@@ -29,7 +29,7 @@
             method="get">
 
           <div class="ui action input">
-              @if ($institutionType == 'college')
+              @if ($institutionType == 'college' && $specialty->typeIs('specialty'))
                 <select class="ui compact selection dropdown" id="select" name="qualification" style="width: 200px;">
                     <option value=" " selected="selected">Все Квалификации</option>
                     @foreach ($specialty->qualifications as $qualification)
@@ -56,7 +56,7 @@
                   @foreach (Specialty::studyForms() as $form)
                     <option value="{{ $form }}"
                             {{ request('study_form') == $form ? 'selected' : '' }}>
-                      {{ translate($form) }}
+                      {{ translate($form, 'i', 's', true) }}
                     </option>
                   @endforeach
               </select>
@@ -90,12 +90,12 @@
                           </h4>
                       </td>
                       <td>
-                          {{ ($institution->pivot->form == '1') ? 'очная' : 'заочная' }}
+                          {{ translate($institution->pivot->form, 'i', 's', true) }}
                       </td>
                       <td>
                           @if (isset($institution->pivot->study_price))
                             @if ($institution->pivot->study_price == 0)
-                              Бюджет
+                              <b style="color:#ff831f">Бюджет</b>
                             @elseif ($institution->pivot->study_price>1)
                               {{ $institution->pivot->study_price }} тг
                             @endif

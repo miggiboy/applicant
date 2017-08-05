@@ -74,6 +74,8 @@ Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.sho
 
 Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 
+Route::get('/articles/custom/{slug}', 'ArticlesController@showCustom')->name('articles.custom.show');
+
 
 /**
  * Professions

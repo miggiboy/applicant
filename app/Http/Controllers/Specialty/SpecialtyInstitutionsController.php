@@ -20,6 +20,10 @@ class SpecialtyInstitutionsController extends Controller
             if ($request->has('study_form')) {
                 $q->wherePivot('form', $request->study_form);
             }
+
+            if ($request->has('qualification')) {
+                $q->withSpecialty($request->qualification);
+            }
         }]);
 
         $cities = City::all()->sortBy('title');

@@ -10,7 +10,7 @@ class SpecialtyDirectionsController extends Controller
         'agriculture',
         'educationandgum',
         'serviceandsociety',
-        'serviceandsocietyc',
+        'serviceandsocietycollege',
         'natural',
         'mandatorysubjects',
         'technique',

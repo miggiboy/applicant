@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::latest()
+        $articles = Article::oldest()
             ->take(3)
             ->get();
 

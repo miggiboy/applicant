@@ -48,15 +48,10 @@
         </div>
     @endif
 
-    @if($institution->is_paid)
+    @if ($institution->is_paid)
         @if ($institution->media->count())
             <div style="width:690px;float:left;position:relative;">
                 <div id="gallery" style="display:none;">
-                    @if ($logo = $institution->getMedia('logo'))
-                        @include ('institutions/partials/show/_gallery-image', [
-                            'image' => $logo
-                        ])
-                    @endif
                     @if ($media = $institution->getMedia('images'))
                         @each ('institutions/partials/show/_gallery-image', $media, 'image')
                     @endif

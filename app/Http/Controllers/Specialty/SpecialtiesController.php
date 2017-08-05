@@ -37,8 +37,6 @@ class SpecialtiesController extends Controller
     {
         $q = Specialty::query();
 
-        $q->getOnly('specialties');
-
         if ($request->has('query')) {
             $q->like($request->input('query'));
         }
