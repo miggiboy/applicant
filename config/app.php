@@ -53,10 +53,6 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'admin-app' => [
-        'url' => 'http://selavu.mi:8000'
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

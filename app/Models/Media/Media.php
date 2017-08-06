@@ -8,6 +8,6 @@ class Media extends BaseMedia
 {
     public function getUrl(string $conversionName = '') :string
     {
-        return config('app.admin-app.url') . parent::getUrl($conversionName);
+        return config('admin-app.url') . parent::getUrl($conversionName);
     }
 }
