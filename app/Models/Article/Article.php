@@ -3,22 +3,9 @@
 namespace App\Models\Article;
 
 use App\Models\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    /**
-     * Laravel traits
-     */
-    use SoftDeletes;
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
     /**
      * Includes only articles which title
      * is like given query parameter

@@ -3,24 +3,11 @@
 namespace App\Models\Profession;
 
 use App\Models\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Specialty\Specialty;
 
 class Profession extends Model
 {
-    /**
-     * Laravel traits
-     */
-    use SoftDeletes;
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
     /**
      * Filters out professions which title
      * is not like the given query parameter

@@ -4,8 +4,6 @@ namespace App\Models\Specialty;
 
 use App\Models\Model;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 use App\Traits\Specialty\Searchable;
 use App\Traits\Specialty\{
     RelatesToInstitution
@@ -18,22 +16,10 @@ use \App\Models\Subject\Subject;
 class Specialty extends Model
 {
     /**
-     * Laravel traits
-     */
-    use SoftDeletes;
-
-    /**
      * Custom traits
      */
     use Searchable;
     use RelatesToInstitution;
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
 
     const STUDY_FORMS = [
         'full-time',
