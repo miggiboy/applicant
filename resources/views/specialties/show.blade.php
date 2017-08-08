@@ -38,7 +38,7 @@
                     </div>
                   @endif
                 @else
-                  @if(isset($specialty->direction) && $specialty->direction->is_active)
+                  @if(isset($specialty->direction) && ! $specialty->direction->is_default)
                     <div class="seven wide column">
                         <h5 class="ui header">Наравление:</h5>
                         <div class="content">
